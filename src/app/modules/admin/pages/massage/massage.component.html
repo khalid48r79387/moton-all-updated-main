@@ -1,0 +1,40 @@
+<div class="container p-5" style="min-height: 58vh">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ 'navigation.messages' | transloco }}
+      </h5>
+      <table class="table row-border hover">
+        <thead>
+          <tr>
+            <th scope="row">#</th>
+            <th scope="col">{{ 'sign_up.name' | transloco }}</th>
+            <th scope="col">
+              {{ 'sign_up.email_address' | transloco }}
+            </th>
+            <th scope="col">{{ 'home.phone_number' | transloco }}</th>
+            <th scope="col">{{ 'home.message' | transloco }}</th>
+            <th scope="col">{{ 'home.actions' | transloco }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let message of messages">
+            <th scope="row">{{ message._id }}</th>
+            <td>{{ message.name }}</td>
+            <td>{{ message.email }}</td>
+            <td>{{ message.phone }}</td>
+            <td>{{ message.message }}</td>
+            <td colspan="3">
+              <button
+                class="btn btn-danger"
+                (click)="onDeleteMessage(message._id)"
+              >
+                {{ 'home.delete' | transloco }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,183 @@
+<div class="container py-5">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ 'navigation.add_event' | transloco }}
+      </h5>
+      <form
+        (ngSubmit)="handelAddEventFormSubmit(addEventForm)"
+        [formGroup]="addEventForm"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">{{
+            'home.event_title' | transloco
+          }}</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            id="title"
+            placeholder="{{ 'home.event_title' | transloco }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">{{
+            'home.description' | transloco
+          }}</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="description"
+            id="description"
+            placeholder="{{ 'home.description' | transloco }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">{{
+            'home.address' | transloco
+          }}</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="address"
+            id="address"
+            placeholder="{{ 'home.address' | transloco }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="date" class="form-label">{{
+            'home.date' | transloco
+          }}</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="date"
+            id="date"
+            placeholder="{{ 'home.date' | transloco }}"
+          />
+        </div>
+
+        <!-- <div class="mb-3">
+          <label for="formFile" class="form-label">{{
+            'home.choose_picture' | transloco
+          }}</label>
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            formControlName="image"
+            (change)="getImage($event)"
+            (change)="submitImageData()"
+          />
+        </div> -->
+
+    <div class="mb-3">
+      <label for="fileInput1" class="form-label">      </label>
+        <input  class="form-control" type="file"  id="fileInput1"  (change)="getImage($event)"  (change)="submitImageData()" >
+
+    </div>  
+
+
+        <div class="mb-3">
+          <label for="details" class="form-label">{{
+            'home.more_information' | transloco
+          }}</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="details"
+            id="details"
+            placeholder="{{ 'home.more_information' | transloco }}"
+          />
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <button
+            [disabled]="addEventForm.invalid"
+            type="submit"
+            class="btn d-btn"
+            style="background-color: #ed553b; color: #ffffff"
+          >
+            {{ 'home.add' | transloco }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- get Events that added -->
+
+
+<h1 class="text">الفعاليات المضافة</h1>
+
+
+<div class="container mb-5">
+  <div class="card">
+    <div class="card-body" *ngIf="events.length > 0; else elseBlock">
+      <h5 class="card-title">
+        {{ 'navigation.events' | transloco }}
+      </h5>
+
+      <div
+        style="
+          width: 100%;
+          display: inline-grid;
+          grid-template-columns: auto auto auto;
+          justify-content: space-around;
+          gap: 10px;
+        "
+      >
+        <div
+          class="card"
+          style="width: 15rem"
+          *ngFor="let eventItem of events"
+        >
+          <img
+            [src]="eventItem.image"
+            class="card-img-top"
+            style="max-height: 250px"
+            alt="event image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ eventItem.title }}</h5>
+            <p class="card-text">
+              {{ eventItem.date }}
+            </p>
+            <p class="card-text">
+              {{ eventItem.address }}
+            </p>
+            <p class="card-text">
+              {{ eventItem.details }}
+            </p>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteEvent(eventItem._id)"
+            >
+              {{ 'home.delete_event' | transloco }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ 'navigation.events' | transloco }}
+        </h5>
+        <p class="card-text">
+          {{ 'home.no_events' | transloco }}
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>

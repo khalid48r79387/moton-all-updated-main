@@ -1,0 +1,141 @@
+<div class="transition-item">
+  <div class="image-item">
+    <img
+      src="../../../assets/image/home-bg.jpeg"
+      style="height: 100vh"
+    />
+  </div>
+  <div class="category-caption">
+    <h1 style="font-size: 4rem; color: #ffffff">
+      {{ 'home.title' | transloco }}
+    </h1>
+    <!-- <div class="search">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="{{ 'home.search_placeholder' | transloco }}"
+      />
+    </div> -->
+    <div class="row">
+      <div class="col-xl-12">
+        <app-auto-complete></app-auto-complete>
+      </div>
+    </div>
+    <div class="buttons" >
+      <button class="b1" type="button" routerLink="/books/paper" style="border-radius: 70px;" >
+        {{ 'home.paper_books' | transloco }}
+      </button>
+      <button class="b2" type="button" routerLink="/books/electronic" style="border-radius: 70px;">
+        {{ 'home.electronic_books' | transloco }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container d-flex gap-5 justify-content-center w-100">
+  <div class="col">
+    <h5 style="color: #ec553b">
+      {{ 'home.electronic_books' | transloco }}
+    </h5>
+    <h1 style="text-align: justify; color: #294d6b">
+      الوصول , القراءة , التمرن والانخراط مع المحتوى الرقمي (الكتاب
+      الإلكتروني )
+    </h1>
+
+    <p style="text-align: justify">
+      "متون هي مكتبة إلكترونية شاملة تقدم مجموعة متنوعة من الكتب
+      الإلكترونية في جميع المجالات , مع تجربة مريحة وسهلة للاستكشاف
+      والشراء عبر الانترنت "
+    </p>
+    <button
+      class="btn btn-lg d-btn"
+      style="
+        width: fit-content;
+        background-color: #ec553b;
+        color: #ffffff;
+      "
+      routerLink="/login"
+    >
+      {{ 'home.subscribe_now' | transloco }}
+    </button>
+  </div>
+  <div class="col pic">
+    <img src="../../assets/image/stacked-books-1.jpg" />
+  </div>
+</div>
+
+<div class="new-books">
+  <h2 style="color: #294d6b">الكتب حديثة الإصدار</h2>
+  <p>تنشر أكثر من 1000 كتاب يوميا من قبل مئات الكتاب المختلفين.</p>
+</div>
+
+<div
+  class="mb-5"
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  "
+>
+  <div
+    *ngIf="isLoading"
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div class="spinner-border" role="status" style="color: #ec553b">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    "
+    class="p-5"
+    *ngIf="!isLoading"
+  >
+    <owl-carousel-o
+      [options]="customOptions"
+      (translated)="getPassedData($event)"
+    >
+      <ng-container *ngFor="let book of books; let i = index">
+        <ng-template carouselSlide [id]="book._id" class="slider">
+          <div
+            class="card p-2 mx-2 shadow"
+            style="cursor: pointer; min-height: 20rem ; border-radius: 25px;"
+          >
+            <a [routerLink]="['/show', book._id]">
+              <img
+                src="https://source.unsplash.com/collection/190727/600x800"
+                class="card-img-top p-5"
+                alt="..."
+              />
+            </a>
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ book.bookName }}</h5>
+              <p class="card-text" style="color: gray">
+                {{ book.authorName }}
+              </p>
+              <span
+                class="d-flex flex-row justify-content-center mb-1"
+                dir="ltr"
+                ><app-star-rating
+                  [rating]="book.ratingsAverage"
+                ></app-star-rating
+              ></span>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+
+<!-- <div class="w-100 d-flex justify-content-center mb-5">
+  <google-map></google-map>
+</div> -->

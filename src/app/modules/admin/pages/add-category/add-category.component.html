@@ -1,0 +1,160 @@
+<h1 class="text">اضافة فئة جديده</h1>
+
+
+<div class="container py-5">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ 'home.add_category' | transloco }}
+      </h5>
+      <form
+        (ngSubmit)="handelAddCategory(addCategoryForm)"
+        [formGroup]="addCategoryForm"
+      >
+        <div class="mb-3">
+          <label for="name" class="form-label">{{
+            'home.category_name' | transloco
+          }}</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            id="name"
+            placeholder="{{ 'home.category_name' | transloco }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="language" class="form-label">{{
+            'home.category_language' | transloco
+          }}</label>
+          <select
+            class="form-select form-select mb-3"
+            formControlName="language"
+            aria-label=".form-select-lg example"
+            id="language"
+          >
+            <option selected>
+              {{ 'home.category_language' | transloco }}
+            </option>
+            <option value="english">
+              {{ 'navigation.english' | transloco }}
+            </option>
+            <option value="arabic">
+              {{ 'navigation.arabic' | transloco }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="type" class="form-label">{{
+            'home.type' | transloco
+          }}</label>
+          <select
+            class="form-select form-select mb-3"
+            formControlName="type"
+            id="type"
+            aria-label=".form-select example"
+          >
+            <option disabled selected>
+              {{ 'home.type' | transloco }}
+            </option>
+            <option value="paper">
+              {{ 'home.paper_books' | transloco }}
+            </option>
+            <option value="electronic">
+              {{ 'home.electronic_books' | transloco }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="fileInput1" class="form-label">   
+               </label>
+            <input  class="form-control" type="file"  id="fileInput1"  (change)="getImage($event)"  (change)="submitImageData()" >
+    
+        </div> 
+
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <button
+            [disabled]="addCategoryForm.invalid"
+            type="submit"
+            class="btn d-btn"
+            style="background-color: #ed553b; color: #ffffff ; width: 35%;"
+          >
+            {{ 'home.add' | transloco }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- get category that added -->
+
+<h1 class="text">الفئات المضافة</h1>
+
+
+
+<div class="container mb-5" >
+  <div class="card">
+    <div class="card-body" *ngIf="categories.length > 0; else elseBlock">
+      
+
+      <div
+        style="
+          width: 100%;
+          display: inline-grid;
+          grid-template-columns: auto auto auto;
+          justify-content: space-around;
+          gap: 10px;
+        "
+      >
+        <div
+          class="card"
+          style="width: 15rem ; border-radius: 20px;"
+          *ngFor="let categoryItem of categories"
+        >
+          <img
+            [src]="categoryItem.image"
+            class="card-img-top"
+            style="max-height: 250px"
+            alt="event image"
+          />
+          <div class="card-body">
+            <p class="card-text">
+              <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">النوع : </span>   {{ categoryItem.type }}
+            </p>
+            <p class="card-text">
+              <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">اللغة : </span>  {{ categoryItem.language }}
+            </p>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="onDeleteCategory(categoryItem._id)"
+            >
+              حذف الكتاب
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="card-body">
+        <h5 class="card-title">
+          الكتب المضافه
+        </h5>
+        <p class="card-text">
+          لا توجد كتب
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,186 @@
+<section style="background-color: #eee">
+  <div class="container py-5">
+    <div
+      class="alert alert-success alert-dismissible"
+      role="alert"
+      *ngIf="successMessage"
+    >
+      <div>{{ 'home.updated_successfully' | transloco }}</div>
+
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+              alt="avatar"
+              class="rounded-circle img-fluid"
+              style="width: 240px"
+            />
+          </div>
+          <div class="row p-2">
+            <form
+              [formGroup]="imageForm"
+              (ngSubmit)="handelImageForm(imageForm)"
+            >
+              <input
+                formControlName="profileImage"
+                id="file"
+                type="file"
+                class="form-control"
+                (change)="onFileSelected($event)"
+              />
+
+              <div
+                *ngIf="
+                  imageForm['controls']['profileImage'].invalid &&
+                  imageForm['controls']['profileImage'].dirty
+                "
+                class="alert alert-danger"
+              >
+                <div
+                  *ngIf="
+                  imageForm['controls']['profileImage'].errors?.['required']
+                "
+                >
+                  File is required.
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  [disabled]="imageForm.invalid"
+                  type="submit"
+                  class="btn my-3"
+                  style="background-color: #ec553b; color: #ffffff"
+                >
+                  {{ 'home.update' | transloco }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <form
+              [formGroup]="updateUserForm"
+              (ngSubmit)="handelUpdateUser(updateUserForm)"
+            >
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">{{ 'sign_up.name' | transloco }}</p>
+                </div>
+                <div class="col-sm-9">
+                  <input
+                    formControlName="name"
+                    type="text"
+                    class="form-control mb-2"
+                    id="name"
+                    required
+                  />
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">
+                    {{ 'sign_up.email_address' | transloco }}
+                  </p>
+                </div>
+                <div class="col-sm-9">
+                  <input
+                    formControlName="email"
+                    type="text"
+                    class="form-control mb-2"
+                    id="email"
+                    required
+                    readonly
+                  />
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">
+                    {{ 'home.phone_number' | transloco }}
+                  </p>
+                </div>
+                <div class="col-sm-9">
+                  <input
+                    formControlName="phone"
+                    type="text"
+                    class="form-control mb-2"
+                    id="phone"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  [disabled]="updateUserForm.invalid"
+                  type="submit"
+                  class="btn mt-3"
+                  style="background-color: #ec553b; color: #ffffff"
+                >
+                  {{ 'home.update' | transloco }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="col-lg-12">
+          <div class="card mb-4">
+            <div class="card-body">
+              <form
+                [formGroup]="updatePasswordForm"
+                (ngSubmit)="
+                  handelUpdatePasswordForm(updatePasswordForm)
+                "
+              >
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">
+                      {{ 'sign_up.new_password' | transloco }}
+                    </p>
+                  </div>
+                  <div class="col-sm-9">
+                    <input
+                      formControlName="password"
+                      type="text"
+                      class="form-control mb-2"
+                      id="password"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button
+                    [disabled]="updatePasswordForm.invalid"
+                    type="submit"
+                    class="btn mt-3"
+                    style="background-color: #ec553b; color: #ffffff"
+                  >
+                    {{ 'home.update' | transloco }}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

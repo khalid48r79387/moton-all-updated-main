@@ -1,0 +1,32 @@
+<div class="p-5" style="min-height: 35rem">
+  <div class="card text-center">
+    <div class="card-title my-5">
+      <h2>
+        <i
+          class="fa-regular fa-circle-check fa-2xl"
+          style="color: #ec553b"
+        ></i>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-center gx-5 px-5">
+        <div class="col">
+          {{ 'navigation.payment_done' | transloco }}
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <button
+            class="btn"
+            type="button"
+            class="btn w-25"
+            [routerLink]="'/order'"
+            style="background-color: #ec553b; color: #ffffff"
+          >
+            {{ 'navigation.orders' | transloco }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

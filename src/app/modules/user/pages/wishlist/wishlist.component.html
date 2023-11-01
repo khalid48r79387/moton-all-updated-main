@@ -1,0 +1,71 @@
+<div class="p-5">
+  <div
+    class="card p-2"
+    style="border: none; background-color: #ffffff"
+  >
+    <div class="card-body">
+      <h2 class="text-center">
+        {{ 'home.wishlist' | transloco }}
+      </h2>
+      <div
+        *ngIf="isLoading"
+        class="row"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          min-height: 25rem;
+        "
+      >
+        <div
+          class="spinner-border"
+          role="status"
+          style="color: #ec553b"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <div
+        class="row align-items-center mb-3 border p-2"
+        *ngFor="let wish of wishlist; index as i"
+      >
+        <div class="container mt-3 mt-md-5">
+          <div class="d-flex align-items-center mb-3 border">
+            <div class="text-center">
+              <img
+                src="https://source.unsplash.com/collection/190727/100x100"
+                style="min-width: 200px"
+                alt="..."
+              />
+            </div>
+            <div class="flex-grow-1" style="margin-right: 10px">
+              <div class="mb-3">{{ wish.bookName }}</div>
+              <div class="mb-3">{{ wish.category.name }}</div>
+              <div class="mb-3">
+                {{ wish.authorName }}
+              </div>
+              <button
+                class="btn"
+                [routerLink]="['/show', wish._id]"
+                style="background-color: #ec553b; color: #ffffff"
+              >
+                {{ 'home.read_more' | transloco }}
+              </button>
+            </div>
+            <div>
+              <button
+                class="btn btn-danger"
+                style="margin-left: 10px"
+                type="button"
+                (click)="removeBookFromWishlist(wish._id)"
+              >
+                {{ 'home.delete' | transloco }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,571 @@
+.news {
+  height: 30%;
+  padding-bottom: 5%;
+}
+
+.news h1 {
+  text-align: center;
+  padding-top: 10%;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #173f5f;
+}
+
+.search {
+  width: 80%;
+  margin: auto;
+  margin-top: 5%;
+  position: relative;
+}
+
+.search input {
+  padding: 1%;
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
+  text-align: right;
+}
+
+.search i {
+  position: absolute;
+  left: 28%;
+  top: 36%;
+}
+
+.text {
+  width: 40%;
+  margin: auto;
+  margin-top: 5%;
+  justify-content: center;
+  display: flex;
+}
+
+.text p {
+  /* padding-left: 30%;
+    padding-top: 5%; */
+
+  text-align: center;
+  font-size: larger;
+  color: aliceblue;
+}
+
+.news-books {
+  padding-top: 5%;
+  display: flex;
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap;
+  background-color: rgb(203, 202, 202);
+  margin-top: 5%;
+  border-radius: 25px;
+  margin-bottom: 5%;
+  padding-bottom: 5%;
+}
+
+.news-books1 {
+  display: inline-block;
+  width: 80%;
+}
+
+.books1-details {
+  display: inline;
+  width: 100%;
+}
+
+.books2-details {
+  margin-right: 2%;
+  margin-bottom: 5%;
+  margin-left: 3%;
+  display: inline-block;
+  width: 20%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.books2-details .heart {
+  /* margin-bottom:2% ; */
+  /* background-color: teal; */
+  width: 10%;
+  display: inline-block;
+  /* padding-top: 5%; */
+  padding-left: 7%;
+  cursor: pointer;
+}
+
+.heart i {
+  cursor: pointer;
+}
+
+.books2-details button {
+  width: 100%;
+  display: inline-block;
+  /* margin-left: 10%; */
+  margin-top: 2%;
+  background-color: tomato;
+  color: aliceblue;
+  padding: 3%;
+  border-radius: 12px;
+  border: none;
+}
+
+.books2-details img {
+  width: 100%;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.books2-details .content h5 {
+  text-align: right;
+  padding-right: 5%;
+}
+
+.content {
+  display: inline-block;
+  width: 90%;
+  /* background-color: brown; */
+}
+
+.books2-details .stars {
+  text-align: center;
+}
+
+.books2-details .stars i {
+  margin-right: 2%;
+  cursor: pointer;
+}
+
+.price {
+  background-color: tomato;
+  position: absolute;
+  top: -1.2%;
+  left: -10%;
+  height: 8%;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.price h6 {
+  color: aliceblue;
+  text-align: right;
+  padding-right: 10%;
+  padding-top: 9%;
+}
+
+.cart {
+  position: fixed;
+  background-color: aliceblue;
+  height: 100vh;
+  width: 40%;
+  top: 0%;
+  left: -100%;
+  z-index: 999999;
+  overflow: scroll;
+}
+
+.shopping {
+  width: 100%;
+  background-color: rgb(14, 14, 89);
+  height: 10%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shopping h3 {
+  float: right;
+  color: aliceblue;
+  padding-top: 2%;
+  padding-right: 4%;
+  display: inline-block;
+}
+
+.shopping i {
+  color: aliceblue;
+  font-weight: bold;
+  font-size: xx-large;
+  cursor: pointer;
+  float: left;
+  padding-left: 5%;
+  padding-top: 2.5%;
+}
+
+/* .cart-content{
+    width: 70%;
+    display: flex;
+    justify-content: right;
+    background-color: brown;
+}
+
+.pic-api{
+    display: inline-block;
+}
+
+.pic-api img{
+    width: 30%;
+}
+
+.content-api{
+    display: inline-block;
+    background-color: blue;
+} */
+
+.container-show {
+  margin: auto;
+  margin-top: 15%;
+  margin-bottom: 15%;
+  background-color: grey;
+  width: 80%;
+  border-radius: 25px;
+}
+
+.container-show h3 {
+  padding-top: 2%;
+  padding-right: 2%;
+  color: rgba(23, 63, 95, 1);
+  text-align: right;
+}
+
+.container-show {
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: grey;
+  width: 80%;
+  border-radius: 25px;
+}
+
+.color {
+  margin-bottom: 10%;
+}
+
+.book-ngfor {
+  margin-bottom: 10%;
+}
+
+.book-name h1 {
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 10%;
+  text-align: center;
+  color: rgba(23, 63, 95, 1);
+}
+
+.book-details {
+  display: flex;
+  width: 90%;
+
+  margin: auto;
+  /* margin-bottom: 3%; */
+}
+
+.book-content {
+  /* float: left; */
+  padding-top: 5%;
+  padding-bottom: 10%;
+  padding-right: 5%;
+  width: 60%;
+  display: inline-block;
+}
+
+.book-content h4 {
+  text-align: right;
+  padding-top: 3%;
+  padding-right: 5%;
+  color: rgb(70, 71, 72);
+}
+
+.book-content h2 {
+  text-align: right;
+  padding-top: 3%;
+  padding-right: 5%;
+  color: rgba(23, 63, 95, 1);
+}
+
+.break {
+  border: 1px solid rgb(47, 45, 45);
+  width: 100%;
+  /* float: right; */
+
+  margin-top: 7%;
+  margin-bottom: 7%;
+  margin-right: 3%;
+}
+
+.button input {
+  width: 40%;
+  display: inline-block;
+  /* margin-left: 10%; */
+  margin-right: 2%;
+  margin-top: 2%;
+  background-color: rgb(53, 52, 52);
+  color: aliceblue;
+  padding: 3%;
+  border-radius: 12px;
+  border: none;
+  float: right;
+}
+
+.book-pic {
+  padding-top: 4%;
+  padding-bottom: 10%;
+  display: inline-block;
+  width: 30%;
+
+  border-radius: 25px;
+  /* float: right; */
+}
+
+.book-pic img {
+  width: 100%;
+  border-radius: 25px;
+}
+
+.delete-icon {
+  padding-top: 2%;
+  padding-left: 5%;
+}
+
+.delete-icon i {
+  font-size: large;
+  color: rgb(111, 10, 10);
+  cursor: pointer;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total {
+  display: inline-block;
+  padding: 0% 3%;
+  font-weight: bold;
+  color: rgb(70, 71, 72);
+}
+
+.cart-price {
+  display: inline-block;
+  padding: 0% 3%;
+  font-weight: bold;
+  color: rgb(70, 71, 72);
+}
+
+.style-btn {
+  width: 100%;
+  text-align: center;
+  /* background-color: aqua; */
+}
+
+.button1 {
+  width: 70%;
+  display: inline-block;
+  /* margin-left: 10%; */
+
+  margin-top: 2%;
+
+  background-color: tomato;
+  color: aliceblue;
+  padding: 3%;
+  border-radius: 12px;
+  border: none;
+}
+.button2 {
+  width: 70%;
+  display: inline-block;
+  /* margin-left: 10%; */
+  margin-top: 2%;
+
+  color: aliceblue;
+  padding: 3%;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(58, 53, 52);
+}
+
+.recycle {
+  text-align: center;
+}
+
+.recycle-btn {
+  text-align: center;
+  width: 40%;
+  margin-top: 3%;
+  border: none;
+  border-radius: 25px;
+  /* background-color: rgba(0, 0, 0, 0.745); */
+}
+
+.recycle-btn h5 {
+  display: inline-block;
+  padding-left: 2%;
+  padding-top: 2%;
+  color: aliceblue;
+}
+
+.recycle-btn i {
+  font-size: large;
+  color: aliceblue;
+}
+
+.cart.closed {
+  left: 0%;
+}
+
+/* Styles for starred and unstarred state */
+.stars .fa-star.starred {
+  color: rgb(182, 159, 29);
+}
+
+.stars .fa-star.unstarred {
+  color: grey;
+}
+
+/* Styles for hearted and unhearted state */
+.heart .fa-heart.hearted {
+  color: red;
+}
+
+.heart .fa-heart.unhearted {
+  color: grey;
+}
+
+/* Styles for starred state
+
+   */
+
+/* Styles for screens with a maximum width of 768 pixels (adjust as needed) */
+@media screen and (max-width: 768px) {
+  .news {
+    height: auto; /* Remove fixed height on small screens */
+  }
+
+  .news h1 {
+    margin-top: 7%;
+    font-size: 40px; /* Decrease the font size for the header */
+  }
+
+  .text {
+    width: 80%;
+    text-align: right;
+  }
+
+  .search {
+    margin-top: 5%;
+    width: 80%;
+  }
+
+  .search input {
+    padding: 3%;
+    width: 100%; /* Increase the input width */
+  }
+
+  .search i {
+    left: 5%; /* Adjust the icon position */
+  }
+
+  .news-books {
+    width: 100%; /* Take full width on small screens */
+    /* flex-direction: row; Stack items vertically on small screens */
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+    margin-top: 5%; /* Adjust top margin for smaller screens */
+  }
+
+  .news-books1 {
+    width: 60%; /* Take full width on small screens */
+  }
+
+  .news-books2 {
+    width: 30%; /* Take full width on small screens */
+    text-align: right; /* Center text on small screens */
+    padding-right: 0; /* Remove right padding on small screens */
+  }
+
+  .news-books2 a {
+    padding-top: 3%; /* Adjust padding for smaller screens */
+    padding-bottom: 3%; /* Adjust padding for smaller screens */
+  }
+
+  .news-books2 h5 {
+    padding-bottom: 3%; /* Adjust bottom padding for smaller screens */
+  }
+
+  .books2-details {
+    width: 45%; /* Take full width on small screens */
+    margin-right: 0; /* Remove right margin on small screens */
+  }
+
+  .books2-details .heart {
+    left: 3%; /* Adjust the position of the heart icon */
+    top: 1%; /* Adjust the position of the heart icon */
+  }
+
+  .books2-details button {
+    text-align: center;
+    width: 100%; /* Adjust button width for smaller screens */
+  }
+
+  .book-pic {
+    width: 100%; /* Take full width on small screens */
+    text-align: center; /* Center image on small screens */
+  }
+
+  .book-pic img {
+    width: 80%; /* Adjust image width for smaller screens */
+  }
+  .price {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 770px) and (max-width: 1090px) {
+  .news h1 {
+    margin-top: 5%;
+    font-size: 40px; /* Decrease the font size for the header */
+  }
+
+  .text {
+    width: 80%;
+    text-align: right;
+  }
+
+  .search {
+    margin-top: 12%;
+    width: 80%;
+  }
+
+  .search input {
+    padding: 3%;
+    width: 100%; /* Increase the input width */
+  }
+
+  .search i {
+    left: 5%; /* Adjust the icon position */
+  }
+
+  .news-books {
+    margin-bottom: 5%;
+  }
+
+  .price {
+    width: 55%;
+  }
+
+  .books2-details {
+    width: 25%;
+  }
+}
+
+.form-select:focus {
+  border-color: transparent;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(0, 0, 0, 0);
+}
+
+.form-select .btn:focus {
+  outline: none !important;
+}

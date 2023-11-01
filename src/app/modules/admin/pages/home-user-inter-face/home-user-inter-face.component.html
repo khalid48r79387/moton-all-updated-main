@@ -1,0 +1,54 @@
+
+<div class="container py-5">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        تغيير واجهة المستخدم
+      </h5>
+      <form
+      (ngSubmit)="handelUserHome(UserHomeInterFace)" 
+      [formGroup]="UserHomeInterFace"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">
+            العنوان الرئيسي
+            </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            id="title"
+            placeholder="العنوان الرئيسي"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="fileInput1" class="form-label">   
+               </label>
+            <input  class="form-control" type="file"  id="fileInput1"  (change)="getImage($event)"  (change)="submitImageData()" >
+    
+        </div> 
+
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <button
+            [disabled]="UserHomeInterFace.invalid"
+            type="submit"
+            class="btn d-btn"
+            style="background-color: #ed553b; color: #ffffff"
+          >
+            {{ 'home.add' | transloco }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,146 @@
+<div class="d-flex justify-content-center pt-5">
+  <h1 style="font-size: 4rem; color: #294d6b">
+    {{ 'home.complete_your_order' | transloco }}
+  </h1>
+</div>
+<div class="container mb-5" dir="ltr" style="font-family: 'Roboto'">
+  <div class="card p-5">
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ 'home.cash_payment_error_message' | transloco }}
+    </div>
+    <form
+      (ngSubmit)="handlePaymentForm(paymentForm)"
+      [formGroup]="paymentForm"
+    >
+      <div class="d-flex p-1 mt-1">
+        <div
+          class="form-check"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+          "
+        >
+          <input
+            class="form-check-input"
+            type="radio"
+            id="cash"
+            value="cash"
+            formControlName="payment"
+          />
+          <label class="form-check-label" for="cash"> Cash </label>
+        </div>
+      </div>
+      <div class="container mx-0 px-1" *ngIf="showCashPaymentDiv">
+        <div class="row my-4">
+          <div class="col-sm-12">
+            <div class="form-group col-sm-6">
+              <label for="shippingAddress" style="font-size: 0.9rem"
+                >Shipping Address</label
+              >
+
+              <div class="input-group mt-1">
+                <input
+                  formControlName="shippingAddress"
+                  id="shippingAddress"
+                  class="form-control"
+                  type="text"
+                  placeholder="2 Gamal Dewedar St. - Nasr City"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex p-1 mt-1">
+        <div
+          class="form-check"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+          "
+        >
+          <input
+            class="form-check-input"
+            type="radio"
+            id="paypal"
+            value="paypal"
+            formControlName="payment"
+            type="radio"
+          />
+          <label class="form-check-label" for="paypal">
+            <img
+              src="../../../assets/image/paypal-logo.png"
+              alt="paypal"
+              style="width: 5rem"
+            />
+          </label>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex p-1 mt-1">
+        <div
+          class="form-check"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+          "
+        >
+          <input
+            class="form-check-input"
+            type="radio"
+            id="paymob"
+            value="paymob"
+            formControlName="payment"
+            type="radio"
+          />
+          <label class="form-check-label" for="paypal">
+            <img
+              src="../../../assets/image/paymob.png"
+              alt="paypal"
+              style="width: 5rem"
+            />
+          </label>
+        </div>
+      </div>
+
+      <div class="container my-2 mx-0 px-1">
+        <div class="d-flex gap-2">
+          <i class="fa-solid fa-lock"></i>
+          <p style="font-size: 0.7rem">
+            Your transaction is secured by SLL Encryption
+          </p>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <button
+          class="btn btn-primary"
+          type="button"
+          disabled
+          type="submit"
+          [disabled]="paymentForm.invalid"
+          class="btn w-25"
+          style="background-color: #ec553b; color: #ffffff"
+        >
+          <span
+            *ngIf="isLoading"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

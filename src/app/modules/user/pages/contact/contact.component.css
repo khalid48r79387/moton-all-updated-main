@@ -1,0 +1,157 @@
+/* body {
+  background-color: gray !important;
+} */
+
+/* .contact {
+  height: 100vh;
+  justify-content: center;
+  margin-top: 20%;
+  background-image: url(../../../assets/image/5686403.webp);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.contact h1 {
+  text-align: center;
+  padding-top: 20%;
+  color: aliceblue;
+} */
+
+.transition-item img {
+  filter: brightness(20%);
+  width: 100%;
+}
+
+.category-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  width: 60%;
+  margin: auto;
+  margin-top: 5%;
+  justify-content: center;
+  display: flex;
+}
+
+.text p {
+  /* padding-left: 30%;
+    padding-top: 5%; */
+
+  text-align: center;
+  font-size: larger;
+  color: aliceblue;
+}
+
+.contact-data {
+  min-height: 100vh;
+
+  width: 80%;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.contact-data input {
+  text-align: right;
+  /* width: 80%; */
+  height: 8%;
+
+  margin: auto;
+  box-shadow: 5px 7px 15px 1px rgb(179, 177, 177);
+  border: none;
+  border-radius: 25px;
+}
+
+.d-btn {
+  border: 0;
+  background-color: #ed553b;
+  color: #fafafa;
+  width: 17%;
+  height: 12%;
+  text-align: center;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.but {
+  height: 55%;
+  text-align: center;
+  margin-top: 5%;
+}
+
+textarea {
+  text-align: right;
+  /* width: 80%; */
+  /* height: 20%; */
+  margin: auto;
+  box-shadow: 2px 2px;
+  color: rgb(104, 103, 103);
+  box-shadow: 5px 7px 15px 1px rgb(179, 177, 177);
+  border-radius: 25px;
+}
+
+.hhhhhh {
+  width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+  .contact {
+    height: 50vh;
+    background-size: cover;
+  }
+  .contact h1 {
+    padding-top: 15%;
+    font-size: 40px; /* Decrease the font size for the header */
+  }
+
+  .text {
+    width: 90%;
+    text-align: center;
+    padding-top: 5%;
+  }
+
+  .contact-data input,
+  .contact-data textarea {
+    width: 100%; /* Make input fields and textarea full width on smaller screens */
+  }
+
+  .d-btn {
+    width: 60%; /* Adjust button width for smaller screens */
+  }
+
+  .contact {
+    margin-top: 10%; /* Adjust the margin-top for smaller screens */
+  }
+
+  .contact h1 {
+    margin-left: auto; /* Remove margin on smaller screens */
+    margin-right: auto; /* Center text on smaller screens */
+    font-size: 24px; /* Adjust the font size for smaller screens */
+  }
+
+  .contact p {
+    padding-left: 10px; /* Increase left padding for smaller screens */
+    padding-right: 10px; /* Increase right padding for smaller screens */
+    font-size: 16px; /* Adjust the font size for smaller screens */
+  }
+}
+
+@media screen and (min-width: 770px) and (max-width: 1090px) {
+  .contact {
+    height: 60vh;
+    background-size: cover;
+  }
+  .contact h1 {
+    margin-top: 5%;
+    font-size: 40px; /* Decrease the font size for the header */
+  }
+
+  .text {
+    width: 80%;
+    text-align: right;
+  }
+}

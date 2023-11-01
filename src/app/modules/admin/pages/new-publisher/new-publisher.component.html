@@ -1,0 +1,192 @@
+<h1 class="text">اضافة مستخدم جديد</h1>
+
+
+<div class="container py-5 w-100 ">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        اضافة
+      </h5>
+      <form
+      (ngSubmit)="handelAddPublisher(AddPublisher)"
+      [formGroup]="AddPublisher"
+      >
+        <div class="mb-3">
+          <label for="name" class="form-label">
+            الاسم
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            id="name"
+            placeholder=" الاسم"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">
+            البريد الالكتروني
+          </label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            id="email"
+            placeholder=" البريد الالكتروني"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">
+            رقم الهاتف
+          </label>
+          <input
+            type="tel"
+            class="form-control"
+            formControlName="phone"
+            id="phone"
+            placeholder=" رقم الهاتف"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="fileInput1" class="form-label">   
+               </label>
+            <input  class="form-control" type="file"  id="fileInput1"  (change)="getImage($event)"  (change)="submitImageData()" >
+    
+        </div> 
+        <div class="mb-3">
+          <label for="role" class="form-label">
+            الدور
+           </label>
+          <select
+            class="form-select form-select mb-3"
+            formControlName="role"
+            aria-label=".form-select-lg example"
+            id="role"
+          >
+           <option value="admin">
+              مدير
+            </option>
+            <option value="user">
+              مستخدم
+            </option>
+            <option value="publisher">
+              ناشر
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">
+            كلمة المرور
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="password"
+            placeholder=" كلمة المرور"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">
+            اعادة كلمة المرور
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+            id="confirmPassword"
+            placeholder=" اعادة كلمة المرور"
+          />
+        </div>      
+
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <button
+            [disabled]="AddPublisher.invalid"
+            type="submit"
+            class="btn d-btn "
+            style="background-color: #ed553b; color: #ffffff ; width: 35%;"
+          >
+            {{ 'home.add' | transloco }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<h1 class="text">المستخدمين</h1>
+
+
+
+<div class="container mb-5 w-100" >
+  <div class="card">
+    <div class="card-body" *ngIf="Publisher.length > 0; else elseBlock">
+      
+
+      <div
+        style="
+          width: 100%;
+          display: inline-grid;
+          grid-template-columns: auto auto auto;
+          justify-content: space-around;
+          gap: 10px;
+        "
+      >
+        <div
+          class="card"
+          style="width: 22rem ; border-radius: 20px;"
+          *ngFor="let PublisherItem of Publisher"
+        >
+          <img
+            [src]="PublisherItem.profileImage"
+            class="card-img-top"
+            style="max-height: 250px ; border-radius: 20px; "
+            alt="event image"
+          />
+          <div class="card-body">
+            <p class="card-text">
+              <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">رقم التعريف : </span>  {{ PublisherItem._id }}
+            </p>
+            <p class="card-text">
+              <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">الاسم : </span>  {{ PublisherItem.name }}
+            </p>
+            <p class="card-text">
+              <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">الايميل : </span>  {{ PublisherItem.email }}
+            </p>
+            <p class="card-text">
+              <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">الدور : </span> {{ PublisherItem.role }}
+            </p>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="onDeletePublisher(PublisherItem._id)"
+            >
+              حذف المستخدم
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="card-body">
+        <h5 class="card-title">
+          الناشرون
+        </h5>
+        <p class="card-text">
+         لا يوجد ناشرين
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>

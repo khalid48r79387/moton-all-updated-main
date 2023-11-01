@@ -1,0 +1,305 @@
+<div class="container py-5">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          اضف كتاب
+        </h5>
+        <form (ngSubmit)="handelAddBook(AddBook)" [formGroup]="AddBook">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="bookName" class="form-label">اسم الكتاب</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="bookName"
+                id="bookName"
+                placeholder="الاسم"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="authorName" class="form-label">اسم الكاتب</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="authorName"
+                id="authorName"
+                placeholder="اسم الكاتب"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="price" class="form-label">سعر الكتاب</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="price"
+                id="price"
+                placeholder="سعر الكتاب"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="delivaryPrice" class="form-label">سعر الشحن</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="delivaryPrice"
+                id="delivaryPrice"
+                placeholder="سعر الشحن"
+              />
+            </div>
+          </div>
+          <!-- Continue organizing your form fields in rows and columns as needed -->
+          <div class="row">
+            <!-- Example for additional form fields -->
+            <!-- <div class="col-md-6 mb-3">
+              <label for="publisherName" class="form-label">الناشر</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="publisherName"
+                id="publisherName"
+                placeholder="الناشر"
+              />
+            </div> -->
+            <div   class="mb-3">
+              <label for="publicationDate" class="form-label">تاريخ النشر</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="publicationDate"
+                id="publicationDate"
+                placeholder="تاريخ النشر"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="fileInput1" class="form-label">   
+                صورة للكتاب
+                   </label>
+                <input  class="form-control" type="file"  id="fileInput1"  (change)="getImage($event)"  (change)="submitImageData()" >
+        
+            </div> 
+            <div class="col-md-6 mb-3">
+              <label for="numberOfCovers" class="form-label">
+                المجلد
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="numberOfCovers"
+                id="numberOfCovers"
+                placeholder="المجلد"
+              />
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="editionOfBook" class="form-label">
+                الطبعة
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="editionOfBook"
+                id="editionOfBook"
+                placeholder="الطبعة"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="bookSize" class="form-label">
+                الحجم
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="bookSize"
+                id="bookSize"
+                placeholder="الحجم"
+              />
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="type" class="form-label">{{
+                'home.type' | transloco
+              }}</label>
+              <select
+                class="form-select form-select mb-3"
+                formControlName="type"
+                id="type"
+                aria-label=".form-select example"
+              >
+                <option disabled selected>
+                  {{ 'home.type' | transloco }}
+                </option>
+                <option value="paper">
+                  {{ 'home.paper_books' | transloco }}
+                </option>
+                <option value="electronic">
+                  {{ 'home.electronic_books' | transloco }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="language" class="form-label">
+                لغة الكتاب
+              </label>
+              <select
+                class="form-select form-select mb-3"
+                formControlName="language"
+                aria-label=".form-select-lg example"
+                id="language"
+              >
+                <option value="english">
+                  {{ 'navigation.english' | transloco }}
+                </option>
+                <option value="arabic">
+                  {{ 'navigation.arabic' | transloco }}
+                </option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="category" class="form-label">
+                الفئة
+              </label>
+              <select
+                class="form-select form-select mb-3"
+                formControlName="category"
+                aria-label=".form-select-lg example"
+                id="category"
+              >
+                <option *ngFor="let item of category" [value]="item._id">
+                  {{item.name}}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="fileInput2" class="form-label">   
+                ملف الكتاب
+                   </label>
+                <input  class="form-control" type="file"  id="fileInput2"  (change)="getFile($event)"  (change)="submitData()" >
+        
+            </div>
+          </div>
+         
+          <div class="mb-3">
+            <label for="description" class="form-label">
+              الوصف
+            </label>
+            <textarea class=" form-control"
+              formControlName="description"  
+              placeholder="الوصف"
+              id="description"  
+              rows="10">
+            </textarea>
+  
+          </div>
+          <!-- Add the rest of your form fields in a similar manner -->
+          <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+            <button
+              [disabled]="AddBook.invalid"
+              type="submit"
+              class="btn d-btn"
+              style="background-color: #ed553b; color: #ffffff"
+            >
+              {{ 'home.add' | transloco }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+      <!-- get books that added -->
+  
+  
+  
+      <h1 class="text">الكتب المضافة</h1>
+  
+  
+  
+
+
+
+      <div class="container mb-5" >
+        <div class="card">
+          <div class="card-body" *ngIf="Book.length > 0; else elseBlock">
+            
+      
+            <div
+              style="
+                width: 100%;
+                display: inline-grid;
+                grid-template-columns: auto auto auto;
+                justify-content: space-around;
+                gap: 10px;
+              "
+            >
+              <div
+                class="card"
+                style="width: 15rem ; border-radius: 20px;"
+                *ngFor="let BookItem of Book"
+              >
+                <img
+                  [src]="BookItem.image"
+                  class="card-img-top"
+                  style="max-height: 250px"
+                  alt="event image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title"> <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">اسم الكتاب : </span>  {{ BookItem.bookName }}</h5>
+                  <p class="card-text">
+                    <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">النوع : </span>  {{ BookItem.type }}
+                  </p>
+                  <p class="card-text">
+                    <span style="text-align: right; color: rgba(0, 0, 0, 0.6);;">السعر : </span>  {{ BookItem.price }}
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    (click)="onDeleteProdect(BookItem._id)"
+                  >
+                    حذف الكتاب
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <div class="card-body">
+              <h5 class="card-title">
+                الكتب المضافه
+              </h5>
+              <p class="card-text">
+                لا توجد كتب
+              </p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+  
+  
+  
+  
+  
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

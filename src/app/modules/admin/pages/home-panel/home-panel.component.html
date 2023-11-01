@@ -1,0 +1,186 @@
+<div class="container p-5">
+  <div
+    class="card"
+    style="background-color: transparent; border: none"
+  >
+    <div class="card-body">
+      <div class="row text-center p-2 gy-5">
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'home.number_of_paper_books' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalNumberOfPaper }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/paper-books'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'home.number_of_electronic_books' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalNumberOfElectronic }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/electronic-books'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'navigation.orders' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalOrders }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/orders'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'home.sales' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{
+                  totalSalesAchieved.toLocaleString('ar-EG', {
+                    style: 'currency',
+                    currency: 'EGP'
+                  })
+                }}
+              </p>
+              <a
+                href="#"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'navigation.messages' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalNumberOfMessage }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/messages'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'home.number_of_admins' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalNumberOfAdmins }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/admins'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'home.number_of_publishers' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalNumberOfPublishers }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/publishers'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'home.number_of_users' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalNumberOfUsers }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/users'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ 'home.number_of_events' | transloco }}
+              </h5>
+              <p class="card-text">
+                {{ TotalNumberOfEvents }}
+              </p>
+              <a
+                href="#"
+                [routerLink]="'/admin/events'"
+                class="btn"
+                style="background-color: #ed553b; color: #ffffff"
+                >{{ 'navigation.view_all' | transloco }}</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

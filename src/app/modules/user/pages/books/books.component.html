@@ -1,0 +1,282 @@
+<div class="transition-item">
+  <div class="image-item">
+    <img src="../../../assets/image/R.jpeg" style="height: 100vh" />
+  </div>
+  <div class="category-caption">
+    <h1 style="font-size: 4rem; color: #ffffff">
+      {{ 'home.books' | transloco }}
+    </h1>
+    <p class="text-white text-center mb-3">
+      "متون هي كتب إلكترونية شاملة تقدم مجموعة متنوعة من الكتب
+      الإلكترونية في جميع المجالات,مع تجربة مريحة وسهلة للاستكشاف
+      والشراء عبر الانترنت"
+    </p>
+    <!-- <div class="container mt-5">
+      <div
+        class="row height d-flex justify-content-center align-items-center"
+      >
+        <div class="col-md-6">
+          <div class="form">
+            <i class="fa fa-search"></i>
+            <input
+              type="text"
+              class="form-control form-input"
+              placeholder="{{
+                'home.search_placeholder' | transloco
+              }}"
+              style="background-color: #d1d1d1"
+            />
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col-xl-12">
+        <app-auto-complete></app-auto-complete>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex gap-5 p-5">
+  <div class="pic">
+    <img src="../../assets/image/OIP.jpeg" />
+  </div>
+  <div class="more">
+    <h1 class="mb-2" style="text-align: justify">
+      استمتع بتجربة قراءة فريدة مع متجر الكتب الإلكترونية متون
+    </h1>
+    <p style="text-align: justify">
+      هذا هو المكان المثالي لشراء الكتب الإلكترونية.تصفح مجموعتنا
+      الواسعة من الكتب الإلكترونية في جميع المجالات واحصل على تجربة
+      قراءة ممتعة.تسوق الان واحصل على وصول فوري لأفضل الأعمال الأدبية
+      والمعرفية بأسعار ممتازة
+    </p>
+    <button class="button1" routerLink="/about">المزيد عنا؟</button>
+  </div>
+</div>
+
+<div class="p-5">
+  <div
+    style="
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    "
+  >
+    <h2 class="text-center my-4" style="font-weight: 700">
+      {{ 'navigation.arabic_books' | transloco }}
+    </h2>
+    <div
+      *ngIf="isLoading"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      "
+      class="mb-5"
+    >
+      <div
+        class="spinner-border"
+        role="status"
+        style="color: #ec553b"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      "
+      class="p-5"
+      *ngIf="!isLoading"
+    >
+      <owl-carousel-o [options]="customOptions">
+        <ng-container
+          *ngFor="
+            let arabicCategory of arabicCategories;
+            let i = index
+          "
+        >
+          <ng-template
+            carouselSlide
+            [id]="arabicCategory._id"
+            class="slider"
+          >
+            <div
+              class="card p-2 mx-2 shadow"
+              style="
+                cursor: pointer;
+                max-height: 30rem;
+                max-width: 18rem;
+              "
+            >
+              <a
+                [routerLink]="['category/', arabicCategory._id]"
+                [queryParams]="{ language: 'arabic' }"
+              >
+                <img
+                  src="https://source.unsplash.com/collection/190727/600x800"
+                  class="card-img-top"
+                  style="filter: brightness(25%)"
+                  alt="..."
+                />
+                <p
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-center;
+                    position: absolute;
+                    top: 30%;
+                    left: 50%;
+                    width: 100%;
+                    text-align: center;
+                    transform: translate(-50%, -50%);
+                    text-decoration: none;
+                    color: #ffffff;
+                    font-family: 'Roboto';
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                  "
+                >
+                  {{ arabicCategory.name }}
+                </p>
+              </a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>
+
+<div class="p-5">
+  <div
+    style="
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    "
+  >
+    <h2 class="text-center my-4" style="font-weight: 700">
+      {{ 'navigation.english_books' | transloco }}
+    </h2>
+    <div
+      *ngIf="isLoading"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      "
+      class="mb-5"
+    >
+      <div
+        class="spinner-border"
+        role="status"
+        style="color: #ec553b"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      "
+      class="p-5"
+      *ngIf="!isLoading"
+    >
+      <owl-carousel-o [options]="customOptions">
+        <ng-container
+          *ngFor="
+            let englishCategory of englishCategories;
+            let i = index
+          "
+        >
+          <ng-template
+            carouselSlide
+            [id]="englishCategory._id"
+            class="slider"
+          >
+            <div
+              class="card p-2 mx-2 shadow"
+              style="
+                cursor: pointer;
+                max-height: 30rem;
+                max-width: 18rem;
+              "
+            >
+              <a
+                [routerLink]="['category/', englishCategory._id]"
+                [queryParams]="{
+              language: 'english',
+            }"
+              >
+                <img
+                  src="https://source.unsplash.com/collection/190727/600x800"
+                  class="card-img-top"
+                  style="filter: brightness(25%)"
+                  alt="..."
+                />
+                <p
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-center;
+                    position: absolute;
+                    top: 30%;
+                    left: 50%;
+                    width: 100%;
+                    text-align: center;
+                    transform: translate(-50%, -50%);
+                    text-decoration: none;
+                    color: #ffffff;
+                    font-family: 'Roboto';
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                  "
+                >
+                  {{ englishCategory.name }}
+                </p>
+              </a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>
+
+<div
+  class="p-5"
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  "
+>
+  <h1>كن اول من يعلم</h1>
+
+  <hr />
+  <div class="text-center">
+    <p>
+      ارسل لنا بريدك الإلكتروني لكي يتم ارسال لك الكتب الجديدة نتمنى
+      لكم الافضل دائما
+    </p>
+    <button
+      class="btn btn-lg d-btn"
+      routerLink="/login"
+      style="background-color: #ec553b; color: #ffffff"
+    >
+      {{ 'navigation.login' | transloco }}
+    </button>
+  </div>
+</div>

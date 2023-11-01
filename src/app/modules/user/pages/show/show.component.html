@@ -1,0 +1,270 @@
+<div class="row p-5">
+  <div class="card p-5">
+    <div class="card-title d-flex justify-content-center">
+      <h3 style="color: #294d6b; font-size: 3rem; font-weight: 700">
+        {{ book && book.bookName }}
+      </h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <img
+            src="https://source.unsplash.com/collection/190727/600x900"
+            class="card-img-top"
+            alt="..."
+          />
+        </div>
+        <div class="col-sm-9">
+          <p style="color: #294d6b">
+            {{ book && book.authorName }}
+          </p>
+          <hr />
+          <p class="m-0" style="color: #ec553b">
+            {{
+              book &&
+                book.price.toLocaleString('ar-EG', {
+                  style: 'currency',
+                  currency: 'EGP'
+                })
+            }}
+          </p>
+          <p>{{ 'home.shipping_note' | transloco }}</p>
+          <hr />
+          <p class="m-0">
+            {{ 'home.publish_date' | transloco }} :
+            {{ book && book.publicationDate | date : 'short' }}
+          </p>
+          <p class="m-0">
+            {{ 'home.publisher' | transloco }} :
+            {{ book && book.publisherName }}
+          </p>
+          <p class="m-0">
+            {{ 'home.type' | transloco }} :
+            {{ book && book.type }}
+          </p>
+          <p class="m-0">
+            {{ 'home.language' | transloco }} :
+            {{ book && book.language }}
+          </p>
+          <p class="m-0">
+            {{ 'home.edition' | transloco }} :
+            {{ book && book.editionOfBook }}
+          </p>
+          <p class="m-0">
+            {{ 'home.size' | transloco }} :
+            {{ book && book.bookSize }}
+          </p>
+          <span
+            class="d-flex flex-row justify-content-end mb-1"
+            dir="ltr"
+            ><app-star-rating
+              [rating]="book.ratingsAverage"
+            ></app-star-rating
+          ></span>
+          <div class="row" *ngIf="isLoggedIn">
+            <div class="col-sm-3 mt-1">
+              <button
+                (click)="addToCart(book._id)"
+                type="button"
+                class="btn w-100"
+                style="background-color: #ec553b; color: #ffffff"
+              >
+                {{ 'home.add_to_basket' | transloco }}
+              </button>
+            </div>
+            <!-- <div class="col-sm-3 mt-1">
+              <input
+                id="quantity"
+                type="number"
+                class="form-control"
+                style="background-color: #525252; color: #ffffff"
+                value="1"
+                *ngIf="book.type == 'paper'"
+              />
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h6 class="mt-4" style="font-size: 1.2rem; font-weight: 400">
+          {{ 'home.description' | transloco }} :
+        </h6>
+        <p>{{ book && book.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row p-5">
+  <div class="card p-5">
+    <div class="card-body">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+        class="p-5"
+      >
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let review of reviews; let i = index">
+            <ng-template
+              carouselSlide
+              [id]="review._id"
+              class="slider"
+            >
+              <div
+                class="card p-2 mx-2 shadow"
+                style="cursor: pointer; max-width: 18rem"
+              >
+                <div
+                  class="card-body text-center"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <p class="card-text" style="color: gray">
+                    {{ review.title }}
+                  </p>
+                  <p class="card-text">{{ review.user.name }}</p>
+                  <span
+                    class="d-flex flex-row justify-content-center mb-1"
+                    dir="ltr"
+                    ><app-star-rating
+                      [rating]="book.ratingsAverage"
+                    ></app-star-rating
+                  ></span>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row px-5">
+  <div class="card p-5">
+    <div class="card-title d-flex justify-content-center">
+      <h3 style="color: #294d6b; font-size: 2rem; font-weight: 700">
+        {{ 'home.rate_this_book' | transloco }}
+      </h3>
+    </div>
+    <div class="card-body text-center">
+      <form
+        [formGroup]="reviewForm"
+        (ngSubmit)="handelReviewForm(reviewForm)"
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          justify-content: center;
+        "
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">{{
+            'home.comment' | transloco
+          }}</label>
+          <textarea
+            formControlName="title"
+            type="text"
+            class="form-control"
+            id="title"
+          ></textarea>
+        </div>
+
+        <input
+          formControlName="user"
+          type="hidden"
+          class="form-control mb-2"
+          id="user"
+        />
+
+        <input
+          formControlName="book"
+          type="hidden"
+          class="form-control mb-2"
+          id="book"
+        />
+
+        <star-rating-control
+          [starType]="'svg'"
+          [hoverEnabled]="true"
+          formControlName="ratings"
+        ></star-rating-control>
+
+        <div>
+          <button
+            class="btn w-25"
+            type="submit"
+            style="background-color: #ec553b; color: #ffffff"
+            [disabled]="reviewForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row p-5">
+  <div class="card p-5">
+    <div class="card-title">
+      <h3 style="color: #294d6b">
+        {{ 'home.show_page_second_title' | transloco }}
+      </h3>
+    </div>
+    <div class="card-body">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+        class="p-5"
+      >
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let book of books; let i = index">
+            <ng-template
+              carouselSlide
+              [id]="book._id"
+              class="slider"
+              *ngIf="i < 15"
+            >
+              <div
+                class="card p-2 mx-2 shadow"
+                style="cursor: pointer; max-width: 18rem"
+              >
+                <a [routerLink]="['/show', book._id]">
+                  <img
+                    src="https://source.unsplash.com/collection/190727/600x800"
+                    class="card-img-top p-5"
+                    alt="..."
+                  />
+                </a>
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{ book.bookName }}</h5>
+                  <p class="card-text" style="color: gray">
+                    {{ book.authorName }}
+                  </p>
+                  <span
+                    class="d-flex flex-row justify-content-center mb-1"
+                    dir="ltr"
+                    ><app-star-rating
+                      [rating]="book.ratingsAverage"
+                    ></app-star-rating
+                  ></span>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</div>

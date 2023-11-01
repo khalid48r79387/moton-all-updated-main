@@ -1,0 +1,153 @@
+<div class="p-5">
+  <div
+    class="card p-2"
+    style="border: none; background-color: #ffffff"
+  >
+    <div class="card-body">
+      <h2 class="text-center">
+        {{ 'navigation.orders' | transloco }}
+      </h2>
+      <div
+        *ngIf="isLoading"
+        class="row"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          min-height: 25rem;
+        "
+      >
+        <div
+          class="spinner-border"
+          role="status"
+          style="color: #ec553b"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <div
+        class="row align-items-center mb-3 border p-2"
+        *ngFor="let order of orders"
+      >
+        <div class="container mt-3 mt-md-5">
+          <div class="row">
+            <div class="col-12">
+              <div class="list-group mb-5">
+                <div
+                  class="list-group-item p-3 bg-snow"
+                  style="position: relative"
+                >
+                  <div class="row w-100 no-gutters">
+                    <div class="col-6 col-md">
+                      <h6 class="text-charcoal mb-0 w-100">
+                        {{ 'order.order_number' | transloco }}
+                      </h6>
+                      <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">
+                        {{ order._id }}
+                      </p>
+                    </div>
+                    <div class="col-6 col-md">
+                      <h6 class="text-charcoal mb-0 w-100">
+                        {{ 'order.order_date' | transloco }}
+                      </h6>
+                      <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">
+                        {{ order.createdAt | date }}
+                      </p>
+                    </div>
+                    <div class="col-6 col-md">
+                      <h6 class="text-charcoal mb-0 w-100">
+                        {{ 'order.total' | transloco }}
+                      </h6>
+                      <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">
+                        {{
+                          order.totalOrderPrice.toLocaleString(
+                            'ar-EG',
+                            {
+                              style: 'currency',
+                              currency: 'EGP'
+                            }
+                          )
+                        }}
+                      </p>
+                    </div>
+                    <div class="col-6 col-md">
+                      <h6 class="text-charcoal mb-0 w-100">
+                        {{ 'order.shipped_to' | transloco }}
+                      </h6>
+                      <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">
+                        Late M. Night
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item p-3 bg-white">
+                  <div class="row no-gutters">
+                    <div
+                      class="col-12 col-md-9 pr-0 pr-md-3"
+                      *ngIf="order.isDelivered"
+                    >
+                      <div class="alert p-2 alert-success w-100 mb-0">
+                        <h6 class="text-green mb-0">
+                          <b>{{ 'order.shipped' | transloco }}</b>
+                        </h6>
+                        <p class="text-green hidden-sm-down mb-0">
+                          Est. delivery between Aug 5 – Aug 9th, 2017
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="row no-gutters mt-3"
+                      *ngFor="let item of order.cartItems"
+                    >
+                      <div class="col-3 col-md-1">
+                        <img
+                          class="img-fluid pr-3"
+                          src="https://source.unsplash.com/collection/190727/600x900"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-6 col-md-5 pr-0 pr-md-3">
+                        <p class="text-charcoal m-0">
+                          {{ item.book.bookName }}
+                        </p>
+                        <p class="text-charcoal m-0">
+                          {{ item.book.category.name }}
+                        </p>
+                        <p class="text-charcoal m-0">
+                          {{ item.quantity }}
+                        </p>
+                        <b
+                          class="text-charcoal text-left mb-0 mb-md-2"
+                          >{{
+                            item.price.toLocaleString('ar-EG', {
+                              style: 'currency',
+                              currency: 'EGP'
+                            })
+                          }}</b
+                        >
+                      </div>
+                      <div class="col-3 col-md-1">
+                        <button
+                          class="btn"
+                          style="
+                            background-color: #ec553b;
+                            color: #ffffff;
+                          "
+                          [routerLink]="['/view-pdf', item.book._id]"
+                        >
+                          PDF
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

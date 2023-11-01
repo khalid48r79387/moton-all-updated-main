@@ -1,0 +1,138 @@
+/* Dashboard for Admin */
+
+/* page AddBook , Category */
+
+.container {
+  border-radius: 3%;
+  padding: 2% 0%;
+  background-color: #e5e4e4;
+  width: 80%;
+}
+
+.text {
+  text-align: center;
+  margin: 5% 0%;
+  font-weight: bold;
+  font-size: 60px;
+}
+
+.m {
+  margin: auto;
+  margin: 2.5%;
+}
+
+.input-s input {
+  text-align: right;
+  padding: 2.5%;
+  margin: auto;
+  box-shadow: 0.2px 0.5px;
+  /* border: 2px solid; */
+
+  border-radius: 10px;
+}
+
+.select-o select {
+  text-align: right;
+  padding: 1.5% 7%;
+  margin: auto;
+  box-shadow: 0.2px 0.5px;
+}
+
+.subparent {
+  /* background-color: blue; */
+  position: absolute;
+  /* width: 95%;
+    height: 100%; */
+  background-color: white;
+}
+
+.mass {
+  text-align: right;
+  width: 100%;
+  /* height: 70%; */
+
+  margin: auto;
+  box-shadow: 0.2px 0.5px;
+  border-radius: 10px;
+
+  /* color: rgb(104, 103, 103); */
+}
+
+.d-btn {
+  border: 0;
+  background-color: #ed553b;
+  color: #fafafa;
+  width: 17%;
+  height: 12%;
+  text-align: center;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.but {
+  height: 30%;
+  text-align: center;
+}
+
+/* input file */
+
+.file-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* padding-bottom: 5%; Creates a square shape */
+  overflow: hidden;
+}
+
+.file-input-container label {
+  box-shadow: 0.2px 0.5px;
+  /* margin-top: 200px; */
+  padding: 4%;
+  position: absolute;
+  width: 97%;
+  height: auto;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  color: #7d7d7d;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.file-input-container label:hover {
+  background-color: #e4e4e4;
+}
+
+.file-input-container label span {
+  /* text-align: center; */
+  position: absolute;
+  width: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  text-align: right;
+}
+
+.file-input-container input[type='file'] {
+  display: none;
+}
+
+/* for category */
+
+.parent {
+  /* background-color: black; */
+  /* width: 100%;
+    margin: auto; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.format {
+  margin: 5px;
+}

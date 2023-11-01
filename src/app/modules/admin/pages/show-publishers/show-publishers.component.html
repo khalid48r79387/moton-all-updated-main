@@ -1,0 +1,34 @@
+<div class="container p-5" style="min-height: 58vh">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ 'navigation.publishers' | transloco }}
+      </h5>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let publisher of publishers">
+            <th scope="row">{{ publisher._id }}</th>
+            <td>{{ publisher.name }}</td>
+            <td>{{ publisher.email }}</td>
+            <td colspan="3">
+              <button
+                class="btn btn-danger"
+                (click)="deletePublisher(publisher._id)"
+              >
+                {{ 'home.delete' | transloco }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

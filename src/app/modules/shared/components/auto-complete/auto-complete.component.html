@@ -1,0 +1,27 @@
+<div class="container w-50">
+  <form
+    [formGroup]="searchForm"
+    (ngSubmit)="handelSearchForm(searchForm)"
+  >
+    <input
+      list="datalistOptions"
+      type="search"
+      class="p-3"
+      id="dataList"
+      formControlName="search"
+      placeholder="{{ 'home.search_placeholder' | transloco }}"
+      (change)="bookNameValue($any($event.target).value)"
+    />
+    <div style="max-height: 20px; overflow-y: scroll">
+      <datalist id="datalistOptions" style="width: 100%">
+        <option
+          *ngFor="let book of books"
+          [value]="book.bookName"
+        ></option>
+      </datalist>
+    </div>
+    <button type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</div>

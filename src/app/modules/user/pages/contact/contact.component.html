@@ -1,0 +1,149 @@
+<div class="transition-item">
+  <div class="image-item">
+    <img
+      src="../../../assets/image/5686403.webp"
+      style="min-height: 100vh"
+    />
+  </div>
+  <div class="category-caption">
+    <h1 style="font-size: 4rem; color: #ffffff">
+      {{ 'navigation.contact_us' | transloco }}
+    </h1>
+  </div>
+</div>
+
+<div class="px-5 mb-5 p-5">
+  <div class="card">
+    <div class="card-body">
+      <div
+        class="alert alert-success"
+        role="alert"
+        *ngIf="successMessage"
+      >
+        {{ 'home.message_sent' | transloco }}
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="errorMessage"
+      >
+        {{ 'home.incorrect_email' | transloco }}
+      </div>
+      <form
+        (ngSubmit)="handelContactForm(contactForm)"
+        [formGroup]="contactForm"
+        class="contact-data"
+      >
+        <input
+          class="form-control"
+          type="text"
+          formControlName="name"
+          placeholder="{{ 'sign_up.name' | transloco }}"
+        />
+        <div
+          *ngIf="
+            contactForm['controls']['name'].invalid &&
+            (contactForm['controls']['name'].dirty ||
+              contactForm['controls']['name'].touched)
+          "
+          class="alert alert-danger mt-2"
+        >
+          <div
+            *ngIf="contactForm['controls']['name'].errors?.['required']"
+          >
+            {{ 'sign_up.name_required' | transloco }}
+          </div>
+          <div
+            *ngIf="contactForm['controls']['name'].errors?.['minlength']"
+          >
+            {{ 'sign_up.minLength' | transloco }}
+          </div>
+        </div>
+        <br />
+        <input
+          class="form-control"
+          type="text"
+          formControlName="phone"
+          placeholder="{{ 'home.phone_number' | transloco }}"
+        />
+        <div
+          *ngIf="
+            contactForm['controls']['phone'].invalid &&
+            (contactForm['controls']['phone'].dirty ||
+              contactForm['controls']['phone'].touched)
+          "
+          class="alert alert-danger mt-2"
+        >
+          <div
+            *ngIf="contactForm['controls']['phone'].errors?.['required']"
+          >
+            {{ 'sign_up.email_required' | transloco }}
+          </div>
+          <div
+            *ngIf="contactForm['controls']['phone'].errors?.['pattern']"
+          >
+            {{ 'home.phone_format' | transloco }}
+          </div>
+        </div>
+        <br />
+        <input
+          class="form-control"
+          type="email"
+          formControlName="email"
+          placeholder="{{ 'sign_up.email_address' | transloco }}"
+        />
+        <div
+          *ngIf="
+            contactForm['controls']['email'].invalid &&
+            (contactForm['controls']['email'].dirty ||
+              contactForm['controls']['email'].touched)
+          "
+          class="alert alert-danger mt-2"
+        >
+          <div
+            *ngIf="contactForm['controls']['email'].errors?.['required']"
+          >
+            {{ 'sign_up.email_required' | transloco }}
+          </div>
+          <div
+            *ngIf="contactForm['controls']['email'].errors?.['email']"
+          >
+            {{ 'sign_up.email_format' | transloco }}
+          </div>
+        </div>
+        <br />
+        <textarea
+          class="form-control"
+          rows="10"
+          formControlName="message"
+          placeholder="{{ 'home.message' | transloco }}"
+        ></textarea>
+        <div
+          *ngIf="
+            contactForm['controls']['message'].invalid &&
+            (contactForm['controls']['message'].dirty ||
+              contactForm['controls']['message'].touched)
+          "
+          class="alert alert-danger mt-2"
+        >
+          <div
+            *ngIf="contactForm['controls']['message'].errors?.['required']"
+          >
+            {{ 'home.message_required' | transloco }}
+          </div>
+        </div>
+        <br />
+        <div class="but">
+          <button
+            type="submit"
+            class="btn btn-lg d-btn"
+            style="background-color: #ec553b; color: #ffffff"
+            [disabled]="contactForm.invalid"
+          >
+            {{ 'login.send' | transloco }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

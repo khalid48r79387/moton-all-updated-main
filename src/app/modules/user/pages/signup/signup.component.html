@@ -1,0 +1,153 @@
+<div class="d-flex justify-content-center">
+  <div class="card my-5" style="width: 30rem; border: none">
+    <div class="card-body">
+      <div class="d-flex justify-content-center">
+        <img
+          src="../../../assets/image/logo.jpeg"
+          alt="logo"
+          style="width: 100px"
+        />
+      </div>
+      <form
+        (ngSubmit)="handelRegister(registerForm)"
+        [formGroup]="registerForm"
+      >
+        <label for="name">{{ 'sign_up.name' | transloco }}</label>
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control mb-2"
+          id="name"
+        />
+
+        <div
+          *ngIf="
+            registerForm['controls']['name'].invalid &&
+            (registerForm['controls']['name'].dirty ||
+              registerForm['controls']['name'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div
+            *ngIf="registerForm['controls']['name'].errors?.['required']"
+          >
+            {{ 'sign_up.name_required' | transloco }}
+          </div>
+          <div
+            *ngIf="registerForm['controls']['name'].errors?.['minlength']"
+          >
+            {{ 'sign_up.minLength' | transloco }}
+          </div>
+        </div>
+
+        <label for="email">{{
+          'sign_up.email_address' | transloco
+        }}</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control mb-2"
+          id="email"
+        />
+
+        <div
+          *ngIf="
+            registerForm['controls']['email'].invalid &&
+            (registerForm['controls']['email'].dirty ||
+              registerForm['controls']['email'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div
+            *ngIf="registerForm['controls']['email'].errors?.['required']"
+          >
+            {{ 'sign_up.email_required' | transloco }}
+          </div>
+          <div
+            *ngIf="registerForm['controls']['email'].errors?.['email']"
+          >
+            {{ 'sign_up.email_format' | transloco }}
+          </div>
+        </div>
+
+        <label for="password">{{
+          'sign_up.password' | transloco
+        }}</label>
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control mb-2"
+          id="password"
+        />
+
+        <div
+          *ngIf="
+            registerForm['controls']['password'].invalid &&
+            (registerForm['controls']['password'].dirty ||
+              registerForm['controls']['password'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div
+            *ngIf="registerForm['controls']['password'].errors?.['required']"
+          >
+            {{ 'sign_up.password_required' | transloco }}
+          </div>
+        </div>
+
+        <label for="confirmPassword">{{
+          'sign_up.confirm_password' | transloco
+        }}</label>
+        <input
+          formControlName="confirmPassword"
+          type="password"
+          class="form-control mb-2"
+          id="confirmPassword"
+        />
+
+        <div
+          *ngIf="
+            registerForm['controls']['confirmPassword'].invalid &&
+            (registerForm['controls']['confirmPassword'].dirty ||
+              registerForm['controls']['confirmPassword'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div
+            *ngIf="registerForm['controls']['confirmPassword'].errors?.['required']"
+          >
+            {{ 'sign_up.confirm_passowrd_required' | transloco }}
+          </div>
+        </div>
+
+        <div
+          class="text-center"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+          "
+        >
+          <button
+            class="btn btn-primary"
+            type="submit"
+            disabled
+            [disabled]="registerForm.invalid"
+            class="btn mt-5 w-50"
+            style="background-color: #ec553b; color: #ffffff"
+          >
+            {{ 'sign_up.register' | transloco }}
+            <span
+              *ngIf="isLoading"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

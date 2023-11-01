@@ -1,0 +1,460 @@
+<nav class="navbar navbar-expand-lg bg-light shadow-lg custom-navbar " >
+  <div class="container-fluid home">
+    <a class="navbar-brand" [routerLink]="['/user']">
+      <img
+        src="../../../../assets/image/logo.jpeg"
+        alt="logo"
+        style="width: 60px ; height: 50px ; border-radius: 50%;"
+      />
+      <!-- <i class="fab fa-facebook logo"></i> -->
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+          style="color: #ffffff;"
+            class="nav-link"
+            aria-current="page"
+            routerLink=""
+            routerLinkActive="active"
+          >
+            {{ 'navigation.home' | transloco }}           
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            style="color: #ffffff;"
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ 'navigation.arabic_books' | transloco }}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                style="pointer-events: none; font-weight: 500 "
+                >{{ 'home.paper_books' | transloco }}</a
+              >
+            </li>
+            <li
+              *ngFor="
+                let araPCategory of arabicPaperCategories;
+                index as i
+              "
+            >
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  'books/',
+                  araPCategory.type,
+                  'category',
+                  araPCategory._id
+                ]"
+                [queryParams]="{ language: araPCategory.language }"
+                >{{ araPCategory.name }}</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <a
+              class="dropdown-item"
+              style="pointer-events: none; font-weight: 500"
+              >{{ 'home.electronic_books' | transloco }}</a
+            >
+            <li
+              *ngFor="
+                let araECategory of arabicElectronicCategories;
+                index as i
+              "
+            >
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  'books/',
+                  araECategory.type,
+                  'category',
+                  araECategory._id
+                ]"
+                [queryParams]="{ language: araECategory.language }"
+                >{{ araECategory.name }}</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+          style="color: #ffffff;"
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ 'navigation.english_books' | transloco }}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                style="pointer-events: none; font-weight: 500"
+                >{{ 'home.paper_books' | transloco }}</a
+              >
+            </li>
+            <li
+              *ngFor="
+                let enPCategory of englishPaperCategories;
+                index as i
+              "
+            >
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  'books/',
+                  enPCategory.type,
+                  'category',
+                  enPCategory._id
+                ]"
+                [queryParams]="{ language: enPCategory.language }"
+                >{{ enPCategory.name }}</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a
+                class="dropdown-item"
+                style="pointer-events: none; font-weight: 500"
+                >{{ 'home.electronic_books' | transloco }}</a
+              >
+            </li>
+            <li
+              *ngFor="
+                let enECategory of englishElectronicCategories;
+                index as i
+              "
+            >
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  'books/',
+                  enECategory.type,
+                  'category',
+                  enECategory._id
+                ]"
+                [queryParams]="{ language: enECategory.language }"
+                >{{ enECategory.name }}</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a
+          style="color: #ffffff;"
+            class="nav-link"
+            aria-current="page"
+            routerLink="about"
+            routerLinkActive="active"
+          >
+            {{ 'navigation.about_us' | transloco }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+          style="color: #ffffff;"
+            class="nav-link"
+            aria-current="page"
+            routerLink="events"
+            routerLinkActive="active"
+            >{{ 'navigation.events' | transloco }}</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+          style="color: #ffffff;"
+            class="nav-link"
+            aria-current="page"
+            routerLink="contact"
+            routerLinkActive="active"
+            >{{ 'navigation.contact_us' | transloco }}</a
+          >
+        </li>
+      </ul>
+      <!-- <app-language-selector class="d-flex"></app-language-selector> -->
+      <div class="d-flex flex-grow-1 justify-content-end gap-2">
+        <button
+          type="button"
+          class="btn d-flex gap-1"
+          style="border: 1px solid #ed553b; color: #ed553b"
+          routerLink="/login"
+          *ngIf="!isLoggedIn"
+        >
+          <span><i class="fa-solid fa-right-to-bracket"></i></span>
+
+          {{ 'navigation.login' | transloco }}
+        </button>
+        <button
+          type="button"
+          class="btn d-flex gap-1"
+          style="background-color: #ed553b; color: #ffffff"
+          routerLink="/signup"
+          *ngIf="!isLoggedIn"
+        >
+          <span
+            ><i class="fa-solid fa-user" style="color: #ffffff"></i
+          ></span>
+          {{ 'navigation.sign_up' | transloco }}
+        </button>
+        <button
+          class="btn"
+          style="
+            background-color: #ffffff;
+            color: #ec553b;
+            border: 1px solid #ec553b;
+          "
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
+          *ngIf="isLoggedIn"
+          (click)="getUserCart()"
+        >
+          <span
+            ><i
+              class="fa-solid fa-cart-shopping"
+              style="color: #ec553b"
+            ></i
+          ></span>
+          {{ 'navigation.cart' | transloco }}
+        </button>
+        <button
+          class="btn"
+          style="
+            background-color: #ffffff;
+            color: #ec553b;
+            border: 1px solid #ec553b;
+          "
+          type="button"
+          *ngIf="isLoggedIn"
+          [routerLink]="'/user/wishlist'"
+        >
+          <span
+            ><i class="fa-solid fa-heart" style="color: #ec553b"></i
+          ></span>
+          {{ 'navigation.favorites' | transloco }}
+        </button>
+        <div class="dropdown" *ngIf="isLoggedIn">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            style="background-color: #ed553b; color: #ffffff"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span
+              ><i class="fa-solid fa-user" style="color: #ffffff"></i
+            ></span>
+            {{ 'navigation.profile' | transloco }}
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                [routerLink]="'/user/profile'"
+              >
+                {{ 'navigation.profile' | transloco }}
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                [routerLink]="'/user/order'"
+              >
+                {{ 'navigation.orders' | transloco }}
+              </a>
+            </li>
+            <hr />
+            <li>
+              <a class="dropdown-item" href="#" (click)="logout()">
+                {{ 'navigation.logout' | transloco }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div
+    class="offcanvas-header"
+    style="background-color: #173f5f; color: #ffffff"
+  >
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+      {{ 'navigation.cart' | transloco }}
+    </h5>
+    <button
+      type="button"
+      class="btn-close bg-light text-white"
+      style="color: #ffffff"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div *ngIf="cart.totalCartPrice <= 1">
+      <p>{{ 'home.no_items_in_the_cart' | transloco }}</p>
+    </div>
+    <div class="container" *ngIf="cart.totalCartPrice > 0">
+      <div
+        *ngFor="let item of cart.cartItems; let i = index"
+        class="row align-items-center mb-3 border p-2 shadow"
+        style="border-radius: 15px"
+      >
+        <div class="col-md-4 text-center">
+          <img
+            src="https://source.unsplash.com/collection/190727/100x100"
+            style="width: 100px"
+            alt="..."
+          />
+        </div>
+        <div
+          class="col-md-6"
+          style="display: flex; flex-direction: column; gap: 0.3rem"
+        >
+          <p
+            style="font-size: 0.8rem; font-weight: 500"
+            class="m-0 p-0"
+          >
+            {{ item.bookDetails.bookName }}
+          </p>
+
+          <div style="color: gray">
+            {{
+              item.price.toLocaleString('ar-EG', {
+                style: 'currency',
+                currency: 'EGP'
+              })
+            }}
+          </div>
+          <div
+            *ngIf="item.bookDetails.type === 'paper'"
+            class="d-flex"
+            style="background-color: #525252; color: #ffffff"
+          >
+            <button
+              class="btn"
+              style="background-color: #525252; color: #ffffff"
+              (click)="increment(item.quantity, i, item._id)"
+            >
+              +
+            </button>
+            <input
+              type="number"
+              min="1"
+              class="form-control form-control-sm"
+              style="
+                background-color: #525252;
+                color: #ffffff;
+                border: none;
+              "
+              value="{{ item.quantity }}"
+              readonly
+            />
+            <button
+              class="btn"
+              style="background-color: #525252; color: #ffffff"
+              (click)="decrement(item.quantity, i, item._id)"
+            >
+              -
+            </button>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button
+            class="btn btn-xs"
+            type="button"
+            (click)="removeItemFromCart(item._id)"
+          >
+            <i class="fa-solid fa-trash" style="color: #ec553b"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-between">
+      <div>{{ 'navigation.total' | transloco }}</div>
+      <div>
+        {{
+          cart &&
+            cart.totalCartPrice.toLocaleString('ar-EG', {
+              style: 'currency',
+              currency: 'EGP'
+            })
+        }}
+      </div>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-center mb-3">
+      <button
+        type="button"
+        class="btn d-flex gap-1 w-75 justify-content-center"
+        style="background-color: #ed553b; color: #ffffff"
+        [routerLink]="['/payment', cart._id]"
+        data-bs-dismiss="offcanvas"
+      >
+        <span
+          ><i class="fa-solid fa-user" style="color: #ffffff"></i
+        ></span>
+        {{ 'navigation.create_request' | transloco }}
+      </button>
+    </div>
+    <div class="d-flex justify-content-center mb-3">
+      <button
+        type="button"
+        class="btn d-flex gap-1 w-75 justify-content-center"
+        style="background-color: #525252; color: #ffffff"
+        routerLink="/home"
+        data-bs-dismiss="offcanvas"
+      >
+        <span
+          ><i class="fa-solid fa-user" style="color: #ffffff"></i
+        ></span>
+        {{ 'navigation.continue_shopping' | transloco }}
+      </button>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn d-flex gap-1 w-75 justify-content-center"
+        style="color: #ec553b"
+        (click)="clearCart()"
+      >
+        <span
+          ><i class="fa-solid fa-trash" style="color: #ec553b"></i
+        ></span>
+        {{ 'navigation.empty_cart' | transloco }}
+      </button>
+    </div>
+  </div>
+</div>

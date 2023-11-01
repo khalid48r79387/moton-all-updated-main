@@ -1,0 +1,210 @@
+.container{
+    width: 50%;
+}
+
+.file-input-container label  {
+    padding: 3.5%;
+}
+
+
+.file-input-label {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+
+.input-s input {
+
+    padding: 2%;
+}
+  
+
+.parent1{
+    margin: auto;
+    margin-top: 7%;
+    width: 80%;
+   display: flex;
+   /* justify-content: space-between; */
+   justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+
+.content-pub{
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    width: 100%;
+    background-color: #E5E4E4;
+    
+}
+
+.content-pub h5{
+
+    text-align: right;
+    padding-top: 2%;
+    color: rgba(0, 0, 0, 0.6);
+
+}
+
+.content-pub span{
+    float: right;
+    color: rgba(23, 63, 95, 1);
+    padding-right: 5%;
+
+}
+
+.content-pub img{
+    margin: 3% 0%;
+    text-align: center;
+    /* width: 100px;
+    height: 100px;
+    border-radius: 100%; */
+    width: 80%;
+    height: 250px;
+    background-position: left top;    
+    background-repeat: no-repeat;
+
+}
+
+.content-btn{
+    text-align: center;
+
+    margin: 7% 0%;
+}
+
+.content-btn button{
+    border-radius: 10px;
+    margin: auto;
+    width: 40%;
+}
+
+
+.d-btn{
+    width: 25%;
+    height: 15%;
+
+}
+
+
+  
+
+
+/* Media Query for smallest screens (e.g., smartphones) */
+@media screen and (max-width: 700px) {
+    h1 {
+        margin-top: 20%;
+        width: 100%;
+        font-size: 50px;
+    }
+
+    .container {
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        height: auto;
+    }
+
+    .file-input-label {
+        padding: 3.5%;
+        width: 100%;
+        height: 40px;
+    }
+
+    .input-s input {
+        padding: 2%;
+    }
+
+    .row.m {
+        flex-direction: column;
+        height: auto;
+        margin: 3%;
+    }
+
+    .but button {
+        width: 50%;
+        height: 50px;
+    }
+
+    .parent1{
+        width: 90%;
+    }
+
+    .content-pub {
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        /* margin: 5%; */
+        margin-top: 10% ;
+        
+    }
+
+    .content-pub h5 {
+        font-size: medium;
+        padding-top: 2%;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    .content-pub span {
+        color: rgba(23, 63, 95, 1);
+    }
+
+    .content-pub img {
+        margin: 3% 0%;
+        width: 90%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .content-btn {
+        text-align: center;
+        margin: 7% 0%;
+    }
+
+    .content-btn button {
+        border-radius: 10px;
+        margin: auto;
+        width: 70%;
+    }
+
+}
+
+/* Media Query for tablets (e.g., screens with a width between 701px and 900px) */
+@media screen and (min-width: 701px) and (max-width: 1200px) {
+    h1 {
+        margin-top: 10%;
+    }
+
+    .container {
+        margin: auto;
+        text-align: center;
+        width: 80%;
+    }
+
+    .file-input-label {
+        padding: 3.5%;
+        width: 100%;
+    }
+
+    .row.m {
+        flex-wrap: wrap;
+    }
+
+    .col.input-s {
+        width: 50%;
+    }
+
+    .content-pub {
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        margin-top: 10% ;
+
+    }
+
+
+}

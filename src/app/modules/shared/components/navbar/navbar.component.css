@@ -1,0 +1,52 @@
+body {
+  position: relative;
+}
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.home {
+  /* background-color: yellow; */
+  position: relative;
+}
+
+.move {
+  /* margin: auto; */
+  /* background-color: black; */
+  margin: auto 20%;
+  font-size: larger;
+
+  color: #ffffff;
+}
+
+.logo {
+  /* margin: auto ; */
+  /* background-color: black; */
+  font-size: xx-large;
+}
+
+.login {
+  display: flex;
+  /* background-color: blue; */
+  width: 15%;
+  position: absolute;
+  left: 5%;
+  justify-content: space-between;
+}
+
+.open-cart.open {
+  left: 0%;
+}
+
+.custom-navbar {
+  background-color: #002854 !important;
+}
+
+
+.color{
+  color: #ffffff;
+
+}
+

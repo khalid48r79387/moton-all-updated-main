@@ -1,0 +1,270 @@
+<div class="news">
+  <h1>{{ category && category.name }}</h1>
+  <div class="text">
+    <p style="color: gray">
+      يضم هذا القسم الكتب الافضل والاكثر ترويجا , استكشف مجموعتنا
+      الاستثنائية من الكتب الاكثر مبيعا وشهرة في هذا القسم المميز
+    </p>
+  </div>
+  <div class="search">
+    <input
+      id="keyword"
+      class="form-control"
+      type="text"
+      [(ngModel)]="keyword"
+      placeholder="{{ 'home.search_placeholder' | transloco }}"
+    />
+    <i class="icon1 fa-solid fa-magnifying-glass"></i>
+  </div>
+</div>
+
+<div class="p-5">
+  <div class="card" style="border: none; background-color: #ffffff">
+    <div class="card-body">
+      <div class="d-flex justify-content-end mx-2">
+        <select
+          #sortSelect
+          id="sortSelect"
+          class="form-select"
+          style="width: 10rem"
+          aria-label="Sort select"
+          (change)="onOptionsSelected(sortSelect.value)"
+        >
+          <option selected disabled>
+            {{ 'home.sort_by' | transloco }}
+          </option>
+          <option value="price">
+            {{ 'home.price' | transloco }}
+          </option>
+          <option value="bookName">
+            {{ 'sign_up.name' | transloco }}
+          </option>
+        </select>
+      </div>
+      <div class="d-flex flex-row mt-2" style="min-height: 20rem">
+        <div class="col-lg-3">
+          <div>
+            <p
+              style="font-weight: 600"
+              *ngIf="type === 'paper' && language === 'arabic'"
+            >
+              {{ 'home.paper_books' | transloco }}
+              {{ 'navigation.arabic' | transloco }}
+            </p>
+            <p
+              style="font-weight: 600"
+              *ngIf="type === 'paper' && language === 'english'"
+            >
+              {{ 'home.paper_books' | transloco }}
+              {{ 'navigation.english' | transloco }}
+            </p>
+            <p
+              style="font-weight: 600"
+              *ngIf="type === 'electronic' && language === 'arabic'"
+            >
+              {{ 'home.electronic_books' | transloco }}
+              {{ 'navigation.arabic' | transloco }}
+            </p>
+            <p
+              style="font-weight: 600"
+              *ngIf="type === 'electronic' && language === 'english'"
+            >
+              {{ 'home.electronic_books' | transloco }}
+              {{ 'navigation.english' | transloco }}
+            </p>
+          </div>
+          <div>
+            <ul class="p-0" style="list-style-type: none">
+              <li
+                *ngFor="let category of categories; let i = index"
+                style="display: flex; flex-direction: row; gap: 1px"
+              >
+                <!-- <input
+                  #checkBox
+                  id="cat"
+                  type="checkbox"
+                  value="{{ category.name }}"
+                  id="{{ category.name }}"
+                  (change)="
+                    modifyCategoryFilter(
+                      checkBox.value,
+                      checkBox.checked
+                    )
+                  "
+                /><label for="{{ category.name }}">{{
+                  category.name
+                }}</label> -->
+                <a
+                  style="text-decoration: none; color: black"
+                  routerLinkActive="active"
+                  [routerLink]="[
+                    '/books/',
+                    category.type,
+                    'category',
+                    category._id
+                  ]"
+                  [queryParams]="{ language: category.language }"
+                  >{{ category.name }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div
+            *ngIf="isLoading"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              height: 100%;
+            "
+          >
+            <div
+              class="spinner-border"
+              role="status"
+              style="color: #ec553b"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <div class="container" *ngIf="!isLoading">
+            <div class="row" *ngIf="!books?.length">
+              {{ 'home.no_books_found' | transloco }}
+            </div>
+            <div class="row row-cols-3 gy-2" *ngIf="books?.length">
+              <div
+                class="col"
+                *ngFor="
+                  let book of books
+                    | appFilter : 'bookName' : keyword
+                    | sort : 'asc' : sortValue
+                    | paginate
+                      : {
+                          itemsPerPage: itemsPerPage,
+                          currentPage: pagination,
+                        }; let i = index
+                "
+              >
+                <div class="card">
+                  <div
+                    class="text-center p-1"
+                    style="
+                      position: absolute;
+                      width: fit-content;
+                      left: 0px;
+                      background-color: #ec553b;
+                      color: #ffffff;
+                      border-bottom-right-radius: 5px;
+                      border-top-left-radius: 5px;
+                    "
+                  >
+                    {{
+                      book.price.toLocaleString('ar-EG', {
+                        style: 'currency',
+                        currency: 'EGP'
+                      })
+                    }}
+                  </div>
+                  <a [routerLink]="['/show', book._id]">
+                    <img
+                      src="https://source.unsplash.com/collection/190727/600x800"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </a>
+                  <div class="card-body text-center">
+                    <span
+                      class="d-flex flex-row justify-content-center mb-1"
+                      dir="ltr"
+                      ><app-star-rating
+                        [rating]="book.ratingsAverage"
+                      ></app-star-rating
+                    ></span>
+                    <div class="d-flex align-items-center my-2">
+                      <div class="col text-end">
+                        <p
+                          class="m-0"
+                          style="
+                            font-weight: 600;
+                            font-family: 'Roboto';
+                          "
+                        >
+                          {{ book.bookName }}
+                        </p>
+                        <p
+                          class="m-0"
+                          style="
+                            font-family: 'Roboto';
+                            font-size: 0.8rem;
+                          "
+                        >
+                          {{ book.authorName }}
+                        </p>
+                      </div>
+                      <div class="col-md-3" *ngIf="isLoggedIn">
+                        <button
+                          *ngIf="
+                            !isInWishlist(book._id);
+                            else elseBlock
+                          "
+                          type="button"
+                          class="btn"
+                          (click)="addBookToWishlist(book._id)"
+                        >
+                          <i class="fa-regular fa-heart fa-xl"></i>
+                        </button>
+                        <ng-template #elseBlock>
+                          <button
+                            *ngIf="isInWishlist(book._id)"
+                            type="button"
+                            class="btn"
+                            (click)="removeBookFromWishlist(book._id)"
+                          >
+                            <i
+                              class="fa-solid fa-heart fa-xl"
+                              style="color: #ec553b"
+                            ></i></button
+                        ></ng-template>
+                      </div>
+                    </div>
+                    <button
+                      *ngIf="isLoggedIn"
+                      (click)="addToCart(book._id, i)"
+                      type="button"
+                      class="btn w-100"
+                      style="
+                        background-color: #ec553b;
+                        color: #ffffff;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 5px;
+                      "
+                    >
+                      {{ 'home.add_to_basket' | transloco }}
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                        id="loading - {{ i }}"
+                        style="display: none"
+                      ></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <pagination-controls
+          (pageChange)="renderPage($event)"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

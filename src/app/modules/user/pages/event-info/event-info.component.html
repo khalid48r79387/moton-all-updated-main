@@ -1,0 +1,200 @@
+<div class="p-5" style="min-height: 100vh">
+  <div class="card text-center">
+    <div class="card-title my-5">
+      <h1>{{ event?.title }}</h1>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-center gx-5 px-5">
+        <div class="col">
+          <div *ngIf="subscribe">
+            <form
+              (ngSubmit)="
+                handelEventSubmissionForm(eventSubmissionForm)
+              "
+              [formGroup]="eventSubmissionForm"
+              *ngIf="loggedIn; else LogInToSubmit"
+            >
+              <div class="mb-3">
+                <label for="name" class="form-label">{{
+                  'sign_up.name' | transloco
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  formControlName="name"
+                />
+                <div
+                  *ngIf="
+                    eventSubmissionForm['controls']['name'].invalid &&
+                    (eventSubmissionForm['controls']['name'].dirty ||
+                      eventSubmissionForm['controls']['name'].touched)
+                  "
+                  class="alert alert-danger mt-2"
+                >
+                  <div
+                    *ngIf="eventSubmissionForm['controls']['name'].errors?.['required']"
+                  >
+                    {{ 'sign_up.name_required' | transloco }}
+                  </div>
+                  <div
+                    *ngIf="eventSubmissionForm['controls']['name'].errors?.['minlength']"
+                  >
+                    {{ 'sign_up.minLength' | transloco }}
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">{{
+                  'sign_up.email_address' | transloco
+                }}</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                />
+
+                <div
+                  *ngIf="
+                    eventSubmissionForm['controls']['email']
+                      .invalid &&
+                    (eventSubmissionForm['controls']['email'].dirty ||
+                      eventSubmissionForm['controls']['email']
+                        .touched)
+                  "
+                  class="alert alert-danger mt-2"
+                >
+                  <div
+                    *ngIf="eventSubmissionForm['controls']['email'].errors?.['required']"
+                  >
+                    {{ 'sign_up.email_required' | transloco }}
+                  </div>
+                  <div
+                    *ngIf="eventSubmissionForm['controls']['email'].errors?.['email']"
+                  >
+                    {{ 'sign_up.email_format' | transloco }}
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">{{
+                  'home.phone_number' | transloco
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                />
+
+                <div
+                  *ngIf="
+                    eventSubmissionForm['controls']['phone']
+                      .invalid &&
+                    (eventSubmissionForm['controls']['phone'].dirty ||
+                      eventSubmissionForm['controls']['phone']
+                        .touched)
+                  "
+                  class="alert alert-danger mt-2"
+                >
+                  <div
+                    *ngIf="eventSubmissionForm['controls']['phone'].errors?.['required']"
+                  >
+                    {{ 'sign_up.email_required' | transloco }}
+                  </div>
+                  <div
+                    *ngIf="eventSubmissionForm['controls']['phone'].errors?.['pattern']"
+                  >
+                    {{ 'home.phone_format' | transloco }}
+                  </div>
+                </div>
+              </div>
+              <button
+                [disabled]="eventSubmissionForm.invalid"
+                type="submit"
+                class="btn"
+                style="
+                  background-color: #ec553b;
+                  color: #ffffff;
+                  border-radius: 10px;
+                "
+              >
+                {{ 'home.participate' | transloco }}
+              </button>
+            </form>
+
+            <ng-template #LogInToSubmit>
+              <div class="alert alert-warning" role="alert">
+                {{ 'home.login_to_submit_to_event' | transloco }}
+              </div></ng-template
+            >
+          </div>
+
+          <div class="mb-5" *ngIf="!subscribe">
+            <button
+              class="btn w-75 p-4"
+              [routerLink]="['/event-info']"
+              style="
+                background-color: #ec553b;
+                color: #ffffff;
+                border-radius: 10px;
+              "
+            >
+              {{ 'home.event_closed' | transloco }}
+            </button>
+          </div>
+          <hr />
+          <div class="mb-5">
+            <p style="text-align: justify">
+              {{ event?.description }}
+            </p>
+          </div>
+          <hr />
+        </div>
+        <div class="col">
+          <img
+            src="https://source.unsplash.com/collection/190727/300x300"
+            alt="cover"
+            style="
+              width: 75%;
+              height: 75%;
+              object-fit: cover;
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+            "
+          />
+        </div>
+      </div>
+      <div class="text-end px-5">
+        <div class="row">
+          <div class="col-sm-2">
+            <h6>{{ 'home.date' | transloco }}</h6>
+          </div>
+          <div class="col-sm-10">
+            <p>{{ event?.date | date }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h6>{{ 'home.location' | transloco }}</h6>
+          </div>
+          <div class="col-sm-10">
+            <p>{{ event?.address }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h6>{{ 'home.more_information' | transloco }}</h6>
+          </div>
+          <div class="col-sm-10">
+            <p>
+              {{ event?.details }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

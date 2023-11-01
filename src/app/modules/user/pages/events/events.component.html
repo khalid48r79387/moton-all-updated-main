@@ -1,0 +1,67 @@
+<div class="transition-item">
+  <div class="image-item">
+    <img
+      src="../../../assets/image/events.jpeg"
+      style="height: 100vh"
+    />
+  </div>
+  <div class="category-caption">
+    <h1 style="font-size: 4rem; color: #ffffff">
+      {{ 'home.events' | transloco }}
+    </h1>
+  </div>
+</div>
+
+<div class="p-5">
+  <div
+    class="card p-2"
+    style="border: none; background-color: #ffffff"
+    *ngIf="events.length; else elseBlock"
+  >
+    <div class="card-body">
+      <div
+        class="d-flex align-items-center mb-3 border"
+        *ngFor="let event of events"
+      >
+        <div class="text-center">
+          <img
+            src="https://source.unsplash.com/collection/190727/100x100"
+            style="min-width: 200px"
+            alt="..."
+          />
+        </div>
+        <div class="flex-grow-1" style="margin-right: 10px">
+          <div class="mb-3">{{ event.title }}</div>
+          <div class="mb-3">{{ event.date | date }}</div>
+          <div class="mb-3">
+            {{ event.address }}
+          </div>
+          <button
+            class="btn"
+            [routerLink]="['/event-info', event._id]"
+            style="background-color: #ec553b; color: #ffffff"
+          >
+            {{ 'home.read_more' | transloco }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock
+    ><div class="card">
+      <div class="card-body">
+        <div
+          class="mb-3"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <h2>{{ 'home.no_events' | transloco }}</h2>
+        </div>
+      </div>
+    </div></ng-template
+  >
+</div>

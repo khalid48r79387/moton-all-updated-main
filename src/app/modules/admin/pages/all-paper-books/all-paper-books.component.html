@@ -1,0 +1,38 @@
+<div class="container p-5" style="min-height: 58vh">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ 'navigation.books' | transloco }}
+      </h5>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Price</th>
+            <th scope="col">Language</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <th scope="row">{{ book._id }}</th>
+            <td>{{ book.bookName }}</td>
+            <td>{{ book.type }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.language }}</td>
+            <td colspan="3">
+              <button
+                class="btn btn-danger"
+                (click)="onDeleteBook(book._id)"
+              >
+                {{ 'home.delete' | transloco }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+@media (min-width: 576px) {
+  .card-group.card-group-scroll {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+}
+
+.card-group.card-group-scroll > .card {
+  flex-basis: 25%;
+  margin: 0 10px 0 10px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.card-group.card-group-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.card-group.card-group-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

@@ -1,0 +1,121 @@
+<div class="news">
+  <h1>الاصدارات الحديثة</h1>
+  <div class="text">
+    <p>
+      "متون هي مكتبة إلكترونية شاملة تقدم مجموعة متنوعة من الكتب
+      الإلكترونية في جميع المجالات , مع تجربة مريحة وسهلة للاستكشاف
+      والشراء عبر الانترنت "
+    </p>
+  </div>
+  <div class="search">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="ابحث باسم الكتاب او المؤلف"
+    />
+    <i class="icon1 fa-solid fa-magnifying-glass"></i>
+  </div>
+</div>
+<div class="news-books">
+  <div class="news-books1">
+    <div class="books1-details" *ngFor="let nbooks of newBooks">
+      <div class="books2-details">
+        <div class="price">
+          <h6>ج.م 50</h6>
+        </div>
+        <img class="w-100" [src]="nbooks.image" alt=" category " />
+        <div class="stars">
+          <i
+            class="fa-regular fa-star"
+            [class.starred]="nbooks.isStarred"
+            [class.unstarred]="!nbooks.isStarred"
+            (click)="toggleStar(nbooks)"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.starred]="nbooks.isStarred"
+            [class.unstarred]="!nbooks.isStarred"
+            (click)="toggleStar(nbooks)"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.starred]="nbooks.isStarred"
+            [class.unstarred]="!nbooks.isStarred"
+            (click)="toggleStar(nbooks)"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.starred]="nbooks.isStarred"
+            [class.unstarred]="!nbooks.isStarred"
+            (click)="toggleStar(nbooks)"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.starred]="nbooks.isStarred"
+            [class.unstarred]="!nbooks.isStarred"
+            (click)="toggleStar(nbooks)"
+          ></i>
+        </div>
+
+        <div class="heart">
+          <i
+            class="fa-regular fa-heart"
+            [class.hearted]="nbooks.isHearted"
+            [class.unhearted]="!nbooks.isHearted"
+            (click)="toggleHeart(nbooks)"
+          ></i>
+        </div>
+
+        <div class="content">
+          <h5>{{ nbooks.name }}</h5>
+          <h5>{{ nbooks.type }}</h5>
+          <h5>{{ nbooks.language }}</h5>
+        </div>
+
+        <button class="button1">
+          <a routerLink="/cart">اضف الى السلة</a>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="news-books2">
+    <h5>كتب عربية</h5>
+    <a>روايات</a>
+
+    <a>شعر</a>
+
+    <a>مترجمات</a>
+
+    <a>تاريخ</a>
+
+    <a>فلسفة</a>
+
+    <a>قصص قصيرة</a>
+
+    <a>كتب دينية</a>
+
+    <a>فكر</a>
+
+    <a>دراسات</a>
+
+    <a>تنمية بشرية</a>
+
+    <a>مقالات</a>
+
+    <a>فن الطبخ</a>
+
+    <a>ادارة واقتصاد</a>
+
+    <a>ادب رسائل</a>
+
+    <a>مسرحيات</a>
+
+    <a>كتب طبية</a>
+
+    <a>كتب النقد</a>
+
+    <a>كتب القانون</a>
+
+    <a>كتب الترفيه</a>
+  </div>
+</div>
