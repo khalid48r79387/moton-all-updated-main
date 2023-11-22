@@ -14,130 +14,91 @@
         aria-label="Close"
       ></button>
     </div>
-
+<!-- src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" -->
     <div class="row">
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
             <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-              alt="avatar"
+            [src]="getCurrentPic"
               class="rounded-circle img-fluid"
-              style="width: 240px"
+              style="width: 250px ;  border-radius: 50%;"
             />
           </div>
           <div class="row p-2">
             <form
-              [formGroup]="imageForm"
-              (ngSubmit)="handelImageForm(imageForm)"
-            >
-              <input
-                formControlName="profileImage"
-                id="file"
-                type="file"
-                class="form-control"
-                (change)="onFileSelected($event)"
-              />
+            [formGroup]="imageForm"
+            (ngSubmit)="handelImageForm(imageForm)"
+          >
+          <div class="mb-3">
+            <label for="fileInput1" class="form-label">   
+                 </label>
+              <input  class="form-control" type="file"  id="fileInput1"  (change)="getImage($event)"  (change)="submitImageData()" >
+      
+          </div>
 
-              <div
-                *ngIf="
-                  imageForm['controls']['profileImage'].invalid &&
-                  imageForm['controls']['profileImage'].dirty
-                "
-                class="alert alert-danger"
+            <div class="d-flex justify-content-center">
+              <button
+                [disabled]="imageForm.invalid"
+                type="submit"
+                class="btn my-3"
+                style="background-color: #ec553b; color: #ffffff"
               >
-                <div
-                  *ngIf="
-                  imageForm['controls']['profileImage'].errors?.['required']
-                "
-                >
-                  File is required.
-                </div>
-              </div>
-              <div class="d-flex justify-content-center">
-                <button
-                  [disabled]="imageForm.invalid"
-                  type="submit"
-                  class="btn my-3"
-                  style="background-color: #ec553b; color: #ffffff"
-                >
-                  {{ 'home.update' | transloco }}
-                </button>
-              </div>
-            </form>
+                {{ 'home.update' | transloco }}
+              </button>
+            </div>
+          </form>
           </div>
         </div>
       </div>
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
-            <form
-              [formGroup]="updateUserForm"
-              (ngSubmit)="handelUpdateUser(updateUserForm)"
-            >
+            <form [formGroup]="updateUserForm" (ngSubmit)="handelUpdateUser()">
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">{{ 'sign_up.name' | transloco }}</p>
                 </div>
                 <div class="col-sm-9">
-                  <input
-                    formControlName="name"
-                    type="text"
-                    class="form-control mb-2"
-                    id="name"
-                    required
-                  />
+                  <input formControlName="name" type="text" class="form-control mb-2" id="name" placeholder="{{Username}}" />
                 </div>
               </div>
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">
-                    {{ 'sign_up.email_address' | transloco }}
-                  </p>
+                  <p class="mb-0">{{ 'sign_up.email_address' | transloco }}</p>
                 </div>
                 <div class="col-sm-9">
-                  <input
-                    formControlName="email"
-                    type="text"
-                    class="form-control mb-2"
-                    id="email"
-                    required
-                    readonly
-                  />
+                  <input formControlName="email" type="text" class="form-control mb-2" id="email" placeholder="{{UserEmail}}" />
                 </div>
               </div>
               <hr />
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">
-                    {{ 'home.phone_number' | transloco }}
-                  </p>
+                  <p class="mb-0">{{ 'home.phone_number' | transloco }}</p>
                 </div>
                 <div class="col-sm-9">
-                  <input
-                    formControlName="phone"
-                    type="text"
-                    class="form-control mb-2"
-                    id="phone"
-                    required
-                  />
+                  <input formControlName="phone" type="text" class="form-control mb-2" id="phone"  placeholder="{{UserPhone}}"/>
                 </div>
               </div>
               <div class="d-flex justify-content-center">
                 <button
-                  [disabled]="updateUserForm.invalid"
+                  [disabled]=" !updateUserForm.value.name && !updateUserForm.value.email && !updateUserForm.value.phone"
                   type="submit"
                   class="btn mt-3"
                   style="background-color: #ec553b; color: #ffffff"
                 >
                   {{ 'home.update' | transloco }}
                 </button>
+
               </div>
             </form>
+            
           </div>
         </div>
       </div>
+
+
     </div>
     <div class="row">
       <div class="col">
@@ -165,6 +126,9 @@
                       required
                     />
                   </div>
+                  <div class="alert alert-danger" *ngIf="updatePasswordForm.get('password')?.errors && updatePasswordForm.get('password')?.touched "> 
+                    <p  *ngIf="updatePasswordForm.get('password')?.getError('minlength')" class="m-0"> ٦ ارقام او احرف على الاقل</p>
+                 </div>
                 </div>
                 <div class="d-flex justify-content-center">
                   <button
@@ -184,3 +148,5 @@
     </div>
   </div>
 </section>
+
+

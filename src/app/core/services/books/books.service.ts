@@ -57,4 +57,14 @@ export class BooksService {
   updateBook(book: Book): Observable<any> {
     return this.client.put(BASE_URL + 'books/' + book._id, book);
   }
+
+
+  // add home page image and title
+  Update_HomePage(){
+    
+  }
+
+  HomePageImage(){
+    return this.client.get(BASE_URL + 'pageimage');
+  }
 }

@@ -436,6 +436,9 @@
 
 /* Styles for screens with a maximum width of 768 pixels (adjust as needed) */
 @media screen and (max-width: 768px) {
+  .card-body {
+    padding: 0%;
+  }
   .news {
     height: auto; /* Remove fixed height on small screens */
   }

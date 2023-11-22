@@ -1,0 +1,27 @@
+.card-body{
+    justify-content: right;
+    overflow: scroll;
+
+}
+
+@media screen and (max-width: 700px) {
+    .card-body{
+        justify-content: right;
+        overflow: scroll;
+    
+    }
+}
+
+
+
+@media screen and (min-width: 701px) and (max-width: 1000px) {
+    .card-body{
+        overflow: scroll;
+    }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1500px) {
+    .card-body{
+        overflow: scroll;
+    }
+}

@@ -93,6 +93,9 @@
           >
             {{ 'sign_up.password_required' | transloco }}
           </div>
+          <div class="alert alert-danger" *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched "> 
+            <p  *ngIf="registerForm.get('password')?.getError('minlength')" class="m-0"> ٦ ارقام او احرف على الاقل</p>
+         </div>
         </div>
 
         <label for="confirmPassword">{{

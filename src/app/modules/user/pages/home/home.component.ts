@@ -52,9 +52,25 @@ export class HomeComponent {
       });
       this.books = this.books?.slice(0, 10);
     });
+
+    this.getHomeInfo();
+
   }
 
   getPassedData(data: SlidesOutputData) {
     this.activeSlides = data;
+  }
+
+  //get home title and image 
+
+  HomeImage :string =''
+  homeTitle:string =''
+  getHomeInfo(){
+    this.booksService.HomePageImage().subscribe({
+      next:(response :any)=>{
+        this.HomeImage = response.data[0].image;
+        this.homeTitle = response.data[0].title;        
+      }
+    })
   }
 }

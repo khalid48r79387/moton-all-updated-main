@@ -1,13 +1,13 @@
 <div class="transition-item">
   <div class="image-item">
     <img
-      src="../../../assets/image/home-bg.jpeg"
-      style="height: 100vh"
+      src="{{HomeImage}}"
+      style="height: 90vh  ; background-size: cover;"
     />
   </div>
   <div class="category-caption">
     <h1 style="font-size: 4rem; color: #ffffff">
-      {{ 'home.title' | transloco }}
+      {{homeTitle}}
     </h1>
     <!-- <div class="search">
       <input
@@ -21,32 +21,36 @@
         <app-auto-complete></app-auto-complete>
       </div>
     </div>
-    <div class="buttons" >
+    <div class="buttons">
+      <button class="b2" type="button" routerLink="/books/electronic" style="border-radius: 70px;">
+        الكتب الإلكترونية
+      </button>
       <button class="b1" type="button" routerLink="/books/paper" style="border-radius: 70px;" >
         {{ 'home.paper_books' | transloco }}
       </button>
-      <button class="b2" type="button" routerLink="/books/electronic" style="border-radius: 70px;">
-        {{ 'home.electronic_books' | transloco }}
-      </button>
+     
     </div>
+
+    <h5 style="font-size: 2rem; color: #ffffff ">
+      معنا.. كتابك بجناحين
+    </h5>
   </div>
 </div>
 
-<div class="container d-flex gap-5 justify-content-center w-100">
-  <div class="col">
+<div class="container d-flex gap-4 justify-content-center w-80 " >
+  <div class="col" style="line-height: 2 ">
     <h5 style="color: #ec553b">
       {{ 'home.electronic_books' | transloco }}
     </h5>
-    <h1 style="text-align: justify; color: #294d6b">
-      الوصول , القراءة , التمرن والانخراط مع المحتوى الرقمي (الكتاب
-      الإلكتروني )
+    <h1 style="text-align: justify; color: #294d6b ; font-size: 1.5rem; line-height: 2rem;">
+      هنا تجربة مريحة وسهلة للاستكشاف والنشر والشراء عبر الانترنت.
+هنا سنساعدك في الوصول السريع, القراءة الحديثة, التماهي مع المحتوى والأسلوب الرقمي للكتاب الحديث.
     </h1>
 
-    <p style="text-align: justify">
-      "متون هي مكتبة إلكترونية شاملة تقدم مجموعة متنوعة من الكتب
-      الإلكترونية في جميع المجالات , مع تجربة مريحة وسهلة للاستكشاف
-      والشراء عبر الانترنت "
-    </p>
+    <!-- <p style="text-align: justify">
+      "هنا تجربة مريحة وسهلة للاستكشاف والنشر والشراء عبر الانترنت.
+      هنا سنساعدك في الوصول السريع, القراءة الحديثة, التماهي مع المحتوى والأسلوب الرقمي للكتاب الحديث."
+    </p> -->
     <button
       class="btn btn-lg d-btn"
       style="
@@ -59,7 +63,7 @@
       {{ 'home.subscribe_now' | transloco }}
     </button>
   </div>
-  <div class="col pic">
+  <div class="col pic" >
     <img src="../../assets/image/stacked-books-1.jpg" />
   </div>
 </div>
@@ -92,6 +96,8 @@
   </div>
   <div
     style="
+    margin: auto !important;
+    width: 70% !important;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -107,7 +113,7 @@
         <ng-template carouselSlide [id]="book._id" class="slider">
           <div
             class="card p-2 mx-2 shadow"
-            style="cursor: pointer; min-height: 20rem ; border-radius: 25px;"
+            style="cursor: pointer; min-height: 10rem ; border-radius: 25px;"
           >
             <a [routerLink]="['/show', book._id]">
               <img

@@ -27,15 +27,13 @@ export class NewPublisherComponent implements OnInit {
 
     password: new FormControl(null, [
       Validators.required,
-      Validators.pattern(
-        '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-      ),
+      Validators.minLength(6),
     ]),
 
     confirmPassword: new FormControl(null, [Validators.required]),
 
     role: new FormControl(null, [Validators.required]),
-    phone: new FormControl(null, [Validators.required]),
+    phone: new FormControl(null, [Validators.required , Validators.minLength(11) , Validators.maxLength(11)]),
 
     profileImage: new FormControl(null, [Validators.required]),
   });
@@ -84,7 +82,9 @@ export class NewPublisherComponent implements OnInit {
           },
           error: (err) => {
             // Handle the error
-            console.log('Error adding category:', err);
+            console.log('Detailed error response:', err.error);
+            alert('الرجاء التاكد من ادخال البيانات كامله صحيحه');
+            this.AddPublisher.reset();
           },
         });
     }

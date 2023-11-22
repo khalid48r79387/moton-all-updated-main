@@ -22,6 +22,13 @@ export class ProfileService {
     );
   }
 
+  NewImage(userProfileData: any) {
+    return this.client.post(
+      BASE_URL + `userimageupload/userimage`,
+      userProfileData
+    );
+  }
+
   changeUserPassword(passwordData: string) {
     return this.client.put(
       BASE_URL + `users/changeMyPassword`,

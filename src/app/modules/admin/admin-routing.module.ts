@@ -15,6 +15,7 @@ import { ShowAdminsComponent } from './pages/show-admins/show-admins.component';
 import { RoleGuard } from 'src/app/core/guards/role.guard';
 import { AdminLayoutComponent } from './pages/admin-layout/admin-layout.component';
 import { HomeUserInterFaceComponent } from './pages/home-user-inter-face/home-user-inter-face.component';
+import { EventInfoComponent } from './pages/event-info/event-info.component';
 
 const routes: Routes = [
   {
@@ -95,6 +96,13 @@ const routes: Routes = [
       {
         path: 'UserInerFace',
         component: HomeUserInterFaceComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['admin'] },
+      },
+
+      {
+        path: 'EventInformation',
+        component: EventInfoComponent,
         canActivate: [RoleGuard],
         data: { roles: ['admin'] },
       },

@@ -1,77 +1,12 @@
 
-.parent1{
-    margin: auto;
-    margin-top: 7%;
-    width: 80%;
-   display: flex;
-   /* justify-content: space-between; */
-   justify-content: space-evenly;
-    flex-wrap: wrap;
-
-}
-
-
-.content-pub{
-    border-radius: 25px;
-    margin-top: 5%;
-    text-align: center;
-    width: 30%;
-    background-color: #E5E4E4;
-    
-}
-
-.content-pub h5{
-
-    text-align: right;
-    padding-top: 2%;
-    color: rgba(0, 0, 0, 0.6);
-
-}
-
-.content-pub span{
-    float: right;
-    color: rgba(23, 63, 95, 1);
-    padding-right: 5%;
-
-}
-
-.content-pub img{
-    margin: 3% 0%;
-    text-align: center;
-    width: 70%;
-    height: 300px;
-    border-radius: 25px;
-
-}
-
-
-
-.content-btn{
-    text-align: center;
-
-    margin: 7% 0%;
-}
-
-.content-btn button{
-    border-radius: 10px;
-    margin: auto;
-    width: 70%;
-}
-
-
-.d-btn{
-    width: 25%;
-    height: 15%;
-
-}
-
-
-
-
 /* Media Query for smallest screens (e.g., smartphones) */
 @media screen and (max-width: 700px) {
     h1 {
         margin-top: 20%;
+    }
+
+    .card-body{
+        overflow: scroll;
     }
 
     .container {
@@ -111,29 +46,6 @@
         margin-bottom: 3%;
     }
 
-    .content-btn button {
-        width: 70%;
-    }
-    .content-pub{
-        margin: auto;
-        text-align: center;
-        width: 100%;
-        margin-top: 15% ;
-        
-    }
-
-    .content-pub h5{
-
-        color: rgba(0, 0, 0, 0.6);
-    
-    }
-    
-    .content-pub span{
-        padding-right: 2%;
-        font-size: medium;
-
-    
-    }
 }
 
 
@@ -145,6 +57,10 @@
 @media screen and (min-width: 701px) and (max-width: 1000px) {
     h1 {
         margin-top: 10%;
+    }
+
+    .card-body{
+        overflow: scroll;
     }
 
     .container {
@@ -179,11 +95,6 @@
         width: 50%;
     }
 
-    .content-pub {
-        width: 40%;
-        margin-top: 10% ;
-
-    }
 
    
     .mass {
@@ -198,26 +109,7 @@
         width: 50%;
         height: 50px;
     }
-    .content-pub{
-        margin: auto;
-        text-align: center;
-        width: 40%;
-        margin-top: 10% ;
 
-    }
-
-    .content-pub h5{
-
-        color: rgba(0, 0, 0, 0.6);
-    
-    }
-    
-    .content-pub span{
-        padding-right: 5%;
-        font-size: large;
-
-    
-    }
 }
 
 
@@ -227,40 +119,7 @@
         margin-top: 10%;
     }
 
-
-    .parent1{
-        margin: auto;
-        text-align: center;
-        width: 100%;
-    }
-
-    .content-pub {
-        width: 45%;
-        margin: 2%;
-        margin-top: 10% ;
-
-    }
-    .content-pub h5{
-
-        color: rgba(0, 0, 0, 0.6);
-    
-    }
-    
-    .content-pub span{
-        padding-right: 1%;
-        font-size: large;
-
-    
-    }
-
-
-    .content-btn {
-        margin-top: 5%;
-        
-    }
-
-    .content-pub img {
-        width: 150px;
-        height: 150px;
+    .card-body{
+        overflow: scroll;
     }
 }

@@ -4,7 +4,7 @@
       <img
         src="../../../../assets/image/logo.jpeg"
         alt="logo"
-        style="width: 60px"
+        style="width: 90px ; height: 50px ; border-radius: 15px;"
       />
       <!-- <i class="fab fa-facebook logo"></i> -->
     </a>
@@ -78,7 +78,7 @@
             >{{ 'navigation.messages' | transloco }}</a
           >
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
           style="color: #ffffff;"
             class="nav-link"
@@ -86,7 +86,43 @@
             routerLinkActive="active"
             >{{ 'navigation.events' | transloco }}</a
           >
+        </li> -->
+
+
+        <li class="dropdown nav-item" *ngIf="isLoggedIn">
+          <a
+          style="color: #ffffff;"
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            الفعاليات
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                [routerLink]="['/admin/events']"
+                class="dropdown-item"
+                >اضافه فعاليه</a
+              >
+            </li>
+
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/admin/EventInformation']"
+                >التفاصيل</a
+              >
+            </li>
+    
+          </ul>
         </li>
+
+
+        
+        
         <li class="dropdown nav-item" *ngIf="isLoggedIn">
           <a
           style="color: #ffffff;"

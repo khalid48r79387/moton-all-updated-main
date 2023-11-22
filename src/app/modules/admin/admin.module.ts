@@ -27,6 +27,7 @@ import { ContactService } from 'src/app/core/services/contact/contact.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { DataTablesModule } from 'angular-datatables';
 import { HomeUserInterFaceComponent } from './pages/home-user-inter-face/home-user-inter-face.component';
+import { EventInfoComponent } from './pages/event-info/event-info.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeUserInterFaceComponent } from './pages/home-user-inter-face/home-us
     AddCategoryComponent,
     AddEventComponent,
     EBookComponent,
-    HomeUserInterFaceComponent
+    HomeUserInterFaceComponent,
+    EventInfoComponent
   ],
   imports: [
     CommonModule,

@@ -19,8 +19,8 @@ export class SignupComponent {
       Validators.required,
       Validators.email,
     ]),
-    password: new FormControl(null, [Validators.required]),
-    confirmPassword: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required , Validators.minLength(6)]),
+    confirmPassword: new FormControl(null, [Validators.required , Validators.minLength(6)]),
   });
 
   constructor(
@@ -39,9 +39,10 @@ export class SignupComponent {
     if (registerForm.valid) {
       this.authService.signUp(registerForm.value).subscribe({
         next: (response) => {
-          this.isLoading = false;
-          this.storageService.saveUser(response.data, response.token);
-          window.location.replace('/home');
+
+          this.storageService.clean();
+            // window.location.reload();
+            window.location.replace('/login');
         },
         error: (err) => {
           console.log(err);

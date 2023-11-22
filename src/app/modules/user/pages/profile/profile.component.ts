@@ -23,92 +23,179 @@ export class ProfileComponent implements OnInit {
     profileImage: '',
   };
   updateUserForm: FormGroup = new FormGroup({
-    name: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(10),
-    ]),
-    email: new FormControl(null, [
-      Validators.required,
-      Validators.email,
-    ]),
-    phone: new FormControl(null, [Validators.required]),
+    
+    name: new FormControl(),
+    email: new FormControl(),
+    phone: new FormControl(),
+
   });
 
+
   updatePasswordForm: FormGroup = new FormGroup({
-    password: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required , Validators.minLength(6)]),
   });
 
   imageForm = new FormGroup({
     profileImage: new FormControl(null, [Validators.required]),
   });
-  photoUrl: string = '';
+  photoUrl: any = '';
 
   constructor(
     private profileService: ProfileService,
     private storageService: StorageService
   ) {}
 
-  ngOnInit(): void {
-    this.profileService.getProfile().subscribe((res) => {
-      this.userProfile = res.data;
-      this.updateUserForm.patchValue({
-        name: res.data.name,
-        email: res.data.email,
-        phone: res.data.phone,
+  ngOnInit(): void {    
+    this.getUserProfile();
+    // this.handelUpdateUser();
+    this.getalluserInfo();
+  }
+
+
+
+  // get all user Details
+
+  Username :string=''
+  UserEmail:string=''
+  UserPhone:string=''
+
+  getalluserInfo(){
+    this.profileService.getProfile().subscribe({
+      next:(res)=>{
+        this.UserEmail=res.data.email
+        this.UserPhone = res.data.phone
+        this.Username = res.data.name      
+      },
+      error:(err)=>{}
+
+    })
+  }
+
+  handelUpdateUser() {
+    if (this.updateUserForm.valid) {  
+      const enteredValues: { [key: string]: any } = {};
+      
+      Object.keys(this.updateUserForm.controls).forEach(key => {
+        const control = this.updateUserForm.get(key)!; // Use non-null assertion operator
+        if (control.value !== null && control.value !== undefined) {
+          enteredValues[key] = control.value;
+        }
       });
-      console.log(this.userProfile);
-    });
-  }
+  
+      console.log(enteredValues);
+  
+      this.profileService.updateUserProfile(enteredValues).subscribe({        
+        next: () => {
+          this.successMessage = true;
+          this.updateUserForm.reset();
+          window.location.reload();
+        },
+        error: (err) => {
+          alert('القيمه التي تم ادخالها موجوده مسبقا');
+          console.error('Error updating user:', err);
+          // Log the detailed error response for further analysis
+          console.log('Detailed error response:', err.error);
+          this.updateUserForm.reset();
+        },
 
-  handelUpdateUser(updateUserForm: FormGroup) {
-    if (updateUserForm.valid) {
-      this.profileService
-        .updateUserProfile(updateUserForm.value)
-        .subscribe({
-          next: (response) => {
-            this.successMessage = true;
-          },
-          error: (err) => console.log(err),
-        });
+      });
     }
   }
+  
+  
 
-  handelImageForm(imageForm: FormGroup) {
-    if (imageForm.valid) {
-      this.profileService
-        .updateUserProfile({ profileImage: this.photoUrl })
-        .subscribe({
-          next: (response) => {
-            this.successMessage = true;
-          },
-          error: (err) => console.log(err),
-        });
-    }
-  }
+
+  
+  
+
+
 
   handelUpdatePasswordForm(updatePasswordForm: FormGroup) {
     if (updatePasswordForm.valid) {
       this.profileService
         .changeUserPassword(updatePasswordForm.value)
         .subscribe({
-          next: (response: any) => {
+          next: () => {  
+            alert("الرجاء تسجيل الدخول مره اخرى")       
             this.storageService.clean();
-            this.storageService.saveUser(
-              response.data,
-              response.token
-            );
+            window.location.reload();
             this.successMessage = true;
           },
-          error: (err) => {},
+          error: (err) => {
+          },
         });
     }
   }
 
-  onFileSelected(event: any) {
-    if (event.target.files.length > 0) {
-      this.photoUrl = event.target.files[0].name;
-      console.log(this.photoUrl);
+
+
+  // get last Picture added
+
+  getCurrentPic:any;
+
+  getUserProfile(){
+    this.profileService.getProfile().subscribe({
+      next:(res)=>{
+        this.getCurrentPic = res.data.profileImage; 
+        
+      },
+      error:(error)=>{
+        console.log(error);
+        
+      }
+    })
+  }
+
+
+
+  // get image added
+    saveImg: any ;
+    image: any;
+    getImage(event: any) {
+      if (event.target.files.length > 0) {
+      this.image = event.target.files[0];
+      // console.log(this.image);
+      }
+    }
+
+
+
+    submitImageData() {
+      let formData = new FormData();
+      formData.set('image', this.image);
+  
+      this.profileService.NewImage(formData).subscribe({
+        next: (res) => {
+          this.saveImg = res;
+          this.photoUrl = this.saveImg.filename ;
+          this.imageForm.patchValue({
+            profileImage: this.photoUrl,
+          });
+        },
+        error: (err) => {
+          console.log('Error fetching Book data:', err);
+        },
+      });
+    }
+
+      handelImageForm(imageForm: FormGroup) {
+    if (imageForm.valid) {
+      this.profileService
+        .updateUserProfile({ profileImage: this.photoUrl })
+        .subscribe({
+          next: (response) => {
+            console.log(response);
+            window.location.reload();
+            this.successMessage = true;
+          },
+          error: (err) => console.log(err),
+        });
     }
   }
+
+  
+
 }
+
+
+
