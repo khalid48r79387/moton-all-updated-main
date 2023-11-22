@@ -104,7 +104,7 @@
                       <div class="col-3 col-md-1">
                         <img
                           class="img-fluid pr-3"
-                          src="https://source.unsplash.com/collection/190727/600x900"
+                          src="{{item.book.image}}"
                           alt=""
                         />
                       </div>
@@ -135,7 +135,7 @@
                             background-color: #ec553b;
                             color: #ffffff;
                           "
-                          [routerLink]="['/view-pdf', item.book._id]"
+                          [routerLink]="['/view-pdf', item.book.pdf]"
                         >
                           PDF
                         </button>

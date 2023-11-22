@@ -107,7 +107,8 @@
         class="p-5"
       >
         <owl-carousel-o [options]="customOptions">
-          <ng-container *ngFor="let review of reviews; let i = index">
+          <ng-container *ngFor="let review of reviews; let i = index" >
+           
             <ng-template
               carouselSlide
               [id]="review._id"
@@ -146,6 +147,12 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
 
 <div class="row px-5">
   <div class="card p-5">

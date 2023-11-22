@@ -75,7 +75,7 @@ export class NavbarComponent implements OnInit {
   getUserCart(): void {
     this.cartService.getUserCart().subscribe((res) => {
       if (res && res.status == 'success') {
-        this.cart = res.data;
+        this.cart = res.data;        
       }
     });
   }
@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit {
   removeItemFromCart(bookId: string): void {
     this.cartService.removeFromCart(bookId).subscribe((res) => {
       if (res && res.status == 'success') {
-        this.cart = res.data;
+        this.cart = res.data;        
       }
     });
   }

@@ -102,6 +102,7 @@ export class ShowComponent implements OnInit {
     ratings: new FormControl(null, [Validators.required]),
   });
 
+
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
 
@@ -110,6 +111,8 @@ export class ShowComponent implements OnInit {
       this.bookService.GetBookByID(id).subscribe((res) => {
         this.book = res.data;
         this.reviewForm.controls['book'].setValue(this.book._id);
+        console.log(this.book);
+        
       });
     });
 
@@ -124,7 +127,14 @@ export class ShowComponent implements OnInit {
     this.reviewForm.controls['user'].setValue(this.user._id);
 
     this.reviewService.getAllReviews().subscribe((res) => {
-      this.reviews = res.data;
+      let DamyData = res.data
+      console.log(DamyData);
+
+      for (let i = 0; i < DamyData.length; i++) {
+        if (DamyData[i].book === this.book._id) {
+          this.reviews.push(DamyData[i]);
+        }
+      }     
     });
   }
 
@@ -148,4 +158,8 @@ export class ShowComponent implements OnInit {
       error: (err) => this.toastr.error(err.error.errors[0].msg),
     });
   }
+
+  // In your component class
+
+
 }
