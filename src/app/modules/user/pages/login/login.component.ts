@@ -43,7 +43,7 @@ export class LoginComponent {
         next: (response) => {
           // console.log(response.token);
           this.isLoading = false;
-          this.storageService.saveUser(response.data, response.token);
+          this.storageService.saveUser(response.data, response.token);          
           window.location.replace(`/${response.data.role}`);
         },
         error: (err) => {
